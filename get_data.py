@@ -10,3 +10,5 @@ import kagglehub
 path = kagglehub.competition_download('2026-ieee-big-data-traffic-flow-bench')
 
 print("Path to competition files:", path)
+with open(".env", "a") as f:
+    f.write(f"\nFILE_PATH={path}")
