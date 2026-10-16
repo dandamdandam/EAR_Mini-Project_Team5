@@ -1,14 +1,4 @@
 """Task 2: Delayed Onset Bottleneck Dynamics.
-
-[정정] 예측 지평은 60분이 아니라 30분이다.
-  competition_contract.json: history_minutes=60, forecast_horizon_minutes=30, step_minutes=5
-  window_index.csv 실측:     history_end 11:40 -> forecast_start 11:45 -> forecast_end 12:10
-  즉 예측 대상은 5분 x 6스텝. 종전의 `dt_min >= 29.5` 는 6스텝 중 마지막 1스텝만
-  켜는 조건이었다(주석의 "Step 6 (T+30m to T+60m)" 는 60분 지평을 가정한 서술).
-  아래는 하드코딩 대신 템플릿에서 지평 길이를 읽어 "마지막 N스텝"으로 표현한다.
-  N=1 은 종전 동작과 정확히 동치이므로 튜닝된 점수를 바꾸지 않는다.
-  N=2,3 으로 올려 onset IoU 를 재탐색할 때는 train 윈도로 검증할 것.
-
     python task2.py                         # -> outputs/queue_submission.csv
 """
 import argparse
