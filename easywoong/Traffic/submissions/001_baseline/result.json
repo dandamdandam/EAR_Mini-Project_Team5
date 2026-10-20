@@ -1,0 +1,8 @@
+{
+  "kaggle_submission_id": 56301572,
+  "submitted_at": "2026-09-17T09:52:44Z",
+  "public_score": 0.48409,
+  "private_score": null,
+  "local_s_state_train": 0.6889,
+  "note": "Anchor submission. Task 2 (persistence) and Task 4 (weak prior) are held fixed here so that a later submission varying only Task 1 can back out S_physics via the CLAUDE.md section 5 sensitivity identity."
+}

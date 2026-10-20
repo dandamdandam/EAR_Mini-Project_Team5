@@ -1,0 +1,26 @@
+# competition data — 12.39 GB, never commit (CLAUDE.md rule 10)
+data/
+
+# parquet cache derived from submission_key.csv etc.
+cache/
+*.parquet
+
+# generated submission csv (keep configs/hashes in submissions/<id>/, not the payload)
+submissions/**/*.csv
+
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# local model checkpoints and quick smoke results
+runs/**/*.pt
+runs/**/*.cbm
+runs/staeformer_residual_smoke/
+runs/catboost_residual_smoke/
+runs/imputeformer_cpu_smoke/
+
+# editor/OS
+.DS_Store

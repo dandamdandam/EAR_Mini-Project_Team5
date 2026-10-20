@@ -1,0 +1,11 @@
+panel,released_links_day1,topology_sensor_true,observed_but_topology_flag0,links_fd_speed_disagree,links_topology_speed_disagree,observed_missing_from_links
+D12_I405_N,89,50,39,0,89,0
+D12_I405_S,44,44,0,0,44,0
+D12_I5_N,258,93,165,0,258,0
+D12_I5_S,100,100,0,0,100,0
+D7_I10_E,146,101,45,0,146,0
+D7_I10_W,107,107,0,0,107,0
+D7_I210_E,297,75,222,0,297,0
+D7_I210_W,81,81,0,0,81,0
+D7_I405_N,352,96,256,0,352,0
+D7_I405_S,109,109,0,0,109,0

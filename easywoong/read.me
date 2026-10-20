@@ -1,0 +1,37 @@
+# TrafficFlowBench 작업 파일
+
+2026 IEEE Big Data Cup TrafficFlowBench 작업물입니다. 10개 방향 고속도로 corridor의 5분 단위 데이터를 사용합니다. Task 1은 속도·유량 복원, Task 2는 정체 예측, Task 3은 복원한 상태의 물리 정합성 평가, Task 4는 경로별 유량 추정입니다.
+
+## 파일 안내
+
+| 경로 | 내용 |
+| --- | --- |
+| `Traffic/eda.ipynb` | 데이터 구조, 결측, 시간·공간 패턴, 각 Task 입력을 살펴본 EDA 노트북 |
+| `Traffic/eda_assets/figures/`, `tables/` | 노트북에서 만든 그림과 요약표 |
+| `Traffic/docs/competition-spec.md` | 데이터 구성, 평가 방식, 제출 형식 정리 |
+| `Traffic/docs/staeformer-residual.md` | Task 1 보간 + STAEformer residual 실험 설명 |
+| `Traffic/docs/task1-model-comparison.md` | Task 1 모델의 동일 기간 로컬 평가 비교 |
+| `Traffic/docs/spin-h.md` | SPIN-H 구현과 평가 계획. 최종 점수는 아직 없음 |
+| `Traffic/src/io/`, `eda/` | 데이터 경로·로더와 EDA 실행 코드 |
+| `Traffic/src/task1/` | 보간, CatBoost, STAEformer, ImputeFormer, SPIN-H 및 평가 실행 코드 |
+| `Traffic/src/task2/`, `task4/` | 정체 예측·경로 유량의 초기 baseline |
+| `Traffic/src/eval/`, `submit/` | Task 1 로컬 채점과 전체 제출 CSV 생성·검증 코드 |
+| `Traffic/runs/` | 완료한 STAEformer·CatBoost 실험의 설정, 학습 기록, 점수 JSON |
+| `Traffic/submissions/` | 두 번의 제출 설정과 공개 리더보드 결과 JSON |
+| `Traffic/requirements.txt` | 주요 실행 패키지 버전 |
+
+## 현재 확인된 결과
+
+2031년 2월 *train 구간*의 공식 Task 1 타깃 3,443,944개를 홀드아웃으로 평가했습니다. 이는 숨겨진 validation/private 점수가 아닙니다.
+
+| 방법 | 2월 로컬 Task 1 점수 |
+| --- | ---: |
+| 보간 | 0.906532 |
+| 보간 + STAEformer residual | **0.933377** |
+| 보간 + CatBoost residual | 0.930256 |
+
+ImputeFormer와 SPIN-H는 코드가 있지만 최종 2월 점수가 없어 위 표에서 제외했습니다. 실제 대회 공개 리더보드 점수는 `submissions/`에 따로 기록했습니다. 현재 제출 생성 코드는 baseline/보간을 사용하며, 위 residual 모델의 점수가 곧 제출 점수라는 뜻은 아닙니다.
+
+## 실행에 필요한 데이터
+
+원본 데이터 약 12GB, 캐시, 제출 CSV, 학습된 모델 파일은 저장소에 올리지 않았습니다. 별도로 받은 대회 데이터를 `Traffic/data/kaggle_public/`에 두거나 `TFB_DATA_ROOT`로 위치를 지정한 뒤 `Traffic/`에서 실행합니다. 데이터 폴더 구조와 Task별 입력 파일은 `Traffic/docs/competition-spec.md`에 정리했습니다. ImputeFormer·SPIN-H 관련 원저작자 라이선스는 `Traffic/src/task1/`에 포함했습니다.

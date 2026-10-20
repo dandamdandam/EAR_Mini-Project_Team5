@@ -1,0 +1,3 @@
+submission,recorded_public_score,recorded_train_s_state,rows,task1
+001_baseline,0.48409,0.6889,6980503,historical profile fitted on the masked layer
+002_interp,0.61655,0.9048,6980503,"spatio-temporal interpolation (0.85 temporal / 0.15 spatial), profile fallback"

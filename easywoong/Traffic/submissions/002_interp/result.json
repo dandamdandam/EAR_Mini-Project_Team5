@@ -1,0 +1,10 @@
+{
+  "kaggle_submission_id": 56319076,
+  "submitted_at": "2026-09-18T03:02:54Z",
+  "public_score": 0.61655,
+  "private_score": null,
+  "local_s_state_train": 0.9048,
+  "controlled_against": "001_baseline",
+  "delta_public_score": 0.13246,
+  "note": "Task 2 and Task 4 rows are byte-identical to 001, so the entire gain came from S_state and S_physics. Task 1 alone explains only +0.0756 of it (0.35 * the 0.2159 local train delta); the remaining +0.0569 implies S_physics rose by roughly 0.38. For physics to have contributed nothing, S_state on validation would have had to rise by 0.3785, which is impossible unless 001's validation S_state was below 0.62 — well under the 0.6889 measured locally."
+}

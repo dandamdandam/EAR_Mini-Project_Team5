@@ -1,0 +1,19 @@
+file_type,record_unit,join_key,n_columns
+mainline_original,detector × link × 5min,"panel, timestamp, station_id, link_id",16
+mainline_masked,same grid + regime,"panel, timestamp, station_id, link_id",17
+ramp,ramp detector × 5min,"panel, timestamp, ramp_link_id",12
+links,mainline link,"panel, link_id",5
+fd_parameters,mainline link,"panel, link_id",7
+topology,mainline link + neighbors,"panel, link_id",22
+ramp_attachment,ramp to mainline relation,"panel, ramp_link_id",3
+path_set,path + OD pair,"panel, path_id",4
+path_link_incidence,path uses link,"panel, path_id, link_id",2
+state_targets,requested state cell,"panel, timestamp, station_id, link_id",7
+window_index,forecast window,"panel, split, window_id",13
+window_history,window × history time × link,"panel, split, window_id, timestamp, link_id",8
+queue_targets,window × future time × link,"panel, split, window_id, timestamp, link_id",4
+link_counts,measured link constraint,"panel, split, link_id",3
+weak_prior,scenario × path,"panel, departure_time, path_id",6
+path_targets,requested path flow,"panel, departure_time, path_id",6
+submission_key,ID to requested cell,submission_id,13
+submission_template,one requested prediction row,submission_id,6

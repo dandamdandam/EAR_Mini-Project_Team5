@@ -1,0 +1,15 @@
+{
+  "python": "3.11.15",
+  "packages": {
+    "polars": "1.41.1",
+    "numpy": "2.4.4",
+    "matplotlib": "3.10.9",
+    "scipy": "1.17.1",
+    "ipykernel": "7.2.0"
+  },
+  "data_manifest_fingerprint": "82b8e4895d8a1e03",
+  "detail_panel": "D7_I10_E",
+  "queue_panel": "D7_I10_E",
+  "seed": 42,
+  "sampling": "deterministic calendar dates; no random sampling"
+}
