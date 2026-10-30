@@ -54,7 +54,7 @@ def wy_for_days(ck, week, week_ctx, year, offset, daily_ext, g_days, dows, doys,
     return np.clip(out, 0.0, 1.5)
 
 
-def build_panel_split(panel, z, split, models, qmodel, val_daily, tau):
+def build_panel_split(panel, z, split, models, qmodel, val_daily, cfg):
     day_model, day_ctx, week_model, week_ctx, year_model, ck, offset = models
     links = [str(l) for l in z['links']]
     L = len(links)
@@ -62,6 +62,7 @@ def build_panel_split(panel, z, split, models, qmodel, val_daily, tau):
     cap = z['cap']
     tdir = KROOT / 'task2' / panel / split
     wi = pd.read_csv(tdir / 'window_index.csv')
+    is_onset = wi['condition'].astype(str).str.lower().str.contains('onset').to_numpy()
     hist = pd.read_parquet(tdir / 'window_history.parquet')
     hist['timestamp'] = pd.to_datetime(hist['timestamp'], utc=True)
     hist['link_id'] = hist['link_id'].astype(str)
@@ -113,7 +114,12 @@ def build_panel_split(panel, z, split, models, qmodel, val_daily, tau):
 
     odd = ode_day_features(day_model, day_ctx, offset, hourly_win, np.arange(N), slots, L, dows)
     nanmask = ~np.isfinite(sph)
-    sph[nanmask] = odd[:, :HIST, :][nanmask]
+    if cfg['no_ode']:
+        from tau_select import panel_climatology
+        slot_h = (slots[:, None] + np.arange(-12, 1)[None, :]) % DAY_STEPS
+        sph[nanmask] = panel_climatology(z)[slot_h][nanmask]
+    else:
+        sph[nanmask] = odd[:, :HIST, :][nanmask]
     flh[~np.isfinite(flh)] = 0.4
 
     wy = wy_for_days(ck, week_model, week_ctx, year_model, offset, daily_ext, g_base + day_idx, dows, doys, L)
@@ -123,10 +129,13 @@ def build_panel_split(panel, z, split, models, qmodel, val_daily, tau):
          'odd': torch.tensor(odd, device=DEVICE), 'wy': torch.tensor(wy, device=DEVICE),
          'stat': torch.tensor(static_features(z), device=DEVICE),
          'st': torch.zeros((N, SEQ, L), device=DEVICE)}
+    if cfg['use_cond']:
+        b['cnd'] = torch.tensor(np.stack([is_onset, ~is_onset], -1).astype(np.float32), device=DEVICE)
     with torch.no_grad():
         logits, _ = qmodel(b, teacher_prob=0.0)
         probs = torch.sigmoid(logits[:, HIST - 1:SEQ]).cpu().numpy()
-    preds = (probs >= tau).astype(np.int64)
+    tau_w = np.where(is_onset, cfg['tau_onset'], cfg['tau_ongoing'])[:, None, None]
+    preds = (probs >= tau_w).astype(np.int64)
 
     rows = []
     for n, (wid, T) in enumerate(zip(wi['window_id'], origins)):
@@ -159,11 +168,14 @@ def generate(splits=('validation', 'private'), out=str(DEFAULT_OUT)):
     year_model.eval()
 
     ck2 = torch.load(CACHE_DIR / 't2_model.pt', weights_only=False)
-    qmodel = QueueNet().to(DEVICE)
+    c_in = int(ck2['model']['proj.0.weight'].shape[1])
+    cfg = {'use_cond': c_in in (21, 18), 'no_ode': c_in in (18, 16),
+           'tau_onset': float(ck2.get('tau_onset', ck2['tau'])),
+           'tau_ongoing': float(ck2.get('tau_ongoing', ck2['tau']))}
+    qmodel = QueueNet(c_in=c_in, no_ode=cfg['no_ode']).to(DEVICE)
     qmodel.load_state_dict(ck2['model'])
     qmodel.eval()
-    tau = ck2['tau']
-    print(f'loaded model tau={tau:.2f}', flush=True)
+    print(f"loaded model c_in={c_in} tau_onset={cfg['tau_onset']:.2f} tau_ongoing={cfg['tau_ongoing']:.2f}", flush=True)
 
     parts = []
     for panel in SCORED_PANELS:
@@ -171,7 +183,7 @@ def generate(splits=('validation', 'private'), out=str(DEFAULT_OUT)):
         val_daily = np.nanmean(z['hourly3'], axis=1).astype(np.float32)
         models = (day_model, day_ctx, week_model, week_ctx, year_model, ck, offsets[panel])
         for split in splits:
-            parts.append(build_panel_split(panel, z, split, models, qmodel, val_daily, tau))
+            parts.append(build_panel_split(panel, z, split, models, qmodel, val_daily, cfg))
     df = pd.concat(parts, ignore_index=True)
     df.to_csv(out, index=False)
     print(f'saved {out}: {len(df)} rows, pos_rate={df.queue_pred.mean():.4f}', flush=True)

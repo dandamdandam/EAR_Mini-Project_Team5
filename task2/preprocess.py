@@ -129,9 +129,12 @@ def select_windows(panel, z, split, rng):
     ongoing = t_all[base & hq & est]
     neg = t_all[base & ~hq]
     if split == 'train':
-        pools = [pick_spaced(onset, 250, 0, rng), pick_spaced(ongoing, 250, 0, rng), pick_spaced(neg, 100, 0, rng)]
+        on_p = pick_spaced(onset, 1500, 0, rng)
+        og_p = pick_spaced(ongoing, 750, 0, rng)
+        ng_p = pick_spaced(neg, 300, 0, rng)
+        pools = [on_p, og_p, ng_p[~est[ng_p]], ng_p[est[ng_p]]]
     else:
-        pools = [pick_spaced(onset, 30, 24), pick_spaced(ongoing, 30, 24), np.array([], dtype=np.int64)]
+        pools = [pick_spaced(onset, 30, 24), pick_spaced(ongoing, 30, 24)]
     t0s = np.concatenate(pools)
     cond = np.concatenate([np.full(len(p), i, np.int64) for i, p in enumerate(pools)])
     order = np.argsort(t0s)

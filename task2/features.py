@@ -39,7 +39,7 @@ def static_features(z):
                      z['n_or'], z['n_fr']], axis=-1).astype(np.float32)
 
 
-def assemble_pool(panel, z, wy_feats, t0s, cond, rng, day_model, day_ctx, offset, dows):
+def assemble_pool(panel, z, wy_feats, t0s, cond, rng, day_model, day_ctx, offset, dows, fill_clim=None):
     vf = z['vf']
     x = (z['s_raw'] / vf[None]).astype(np.float32)
     fc = (z['f_raw'] / z['cap'][None]).astype(np.float32)
@@ -67,7 +67,11 @@ def assemble_pool(panel, z, wy_feats, t0s, cond, rng, day_model, day_ctx, offset
     tf = np.stack([np.sin(ang_t), np.cos(ang_t), np.sin(ang_d), np.cos(ang_d)], axis=-1).astype(np.float32)
     odd = ode_day_features(day_model, day_ctx, offset, z['hourly'], days, slots, L, dows)
     nanmask = ~np.isfinite(sph)
-    sph[nanmask] = odd[:, :HIST, :][nanmask]
+    if fill_clim is None:
+        sph[nanmask] = odd[:, :HIST, :][nanmask]
+    else:
+        slot_h = (t0s[:, None] + np.arange(-12, 1)[None, :]) % DAY_STEPS
+        sph[nanmask] = fill_clim[slot_h][nanmask]
     flh[~np.isfinite(flh)] = 0.4
     wy = wy_feats['wy'][days]
     stat = static_features(z)

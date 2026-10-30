@@ -56,6 +56,8 @@ def evaluate(model, pools, tau_grid):
         for s in range(0, N, 16):
             idx = np.arange(s, min(s + 16, N))
             b = to_device(pool, idx)
+            if 'cnd' in pool:
+                b['cnd'] = torch.tensor(pool['cnd'][idx], device=DEVICE)
             logits, _ = model(b, teacher_prob=0.0)
             probs_list.append(torch.sigmoid(logits[:, HIST - 1:SEQ]).cpu().numpy())
         pers = np.repeat((pool['sph'][:, HIST - 1] <= QUEUE_RATIO)[:, None, :].astype(np.float32), HOR, axis=1)
@@ -100,24 +102,27 @@ def main():
     day_model.eval()
     dows = dow_array()
 
+    from tau_select import panel_climatology
     pools = {'train': [], 'val': [], 'test': []}
     for p in SCORED_PANELS:
         z = load_panel(p)
         wy_feats = load_ode_feats(p)
+        fill_clim = panel_climatology(z)
         for split in ['train', 'val', 'test']:
             t0s, cond = preprocess.select_windows(p, z, split, rng)
             mask_rng = np.random.default_rng(zlib.crc32(f'{p}-{split}'.encode()))
-            pool = assemble_pool(p, z, wy_feats, t0s, cond, mask_rng, day_model, day_ctx, offsets[p], dows)
+            pool = assemble_pool(p, z, wy_feats, t0s, cond, mask_rng, day_model, day_ctx, offsets[p], dows, fill_clim)
+            pool['cnd'] = np.stack([np.isin(cond, (0, 2)), np.isin(cond, (1, 3))], -1).astype(np.float32)
             pools[split].append(pool)
             print(f'[pool] {p} {split}: {len(t0s)} windows '
-                  f'(onset={int((cond == 0).sum())}, ongoing={int((cond == 1).sum())}, neg={int((cond == 2).sum())})', flush=True)
+                  f'(onset={int((cond == 0).sum())}, ongoing={int((cond == 1).sum())}, neg={int((cond >= 2).sum())})', flush=True)
 
     qt_all = np.concatenate([pl['qt'].reshape(-1) for pl in pools['train']])
     p_pos = qt_all.mean()
     pos_weight = torch.tensor(min((1 - p_pos) / max(p_pos, 1e-4), 4.0), device=DEVICE)
     print(f'train target positive rate={p_pos:.4f} pos_weight={pos_weight.item():.2f}', flush=True)
 
-    model = QueueNet().to(DEVICE)
+    model = QueueNet(c_in=18, no_ode=True).to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
     tau_grid = np.arange(0.2, 0.81, 0.05)
 
@@ -134,7 +139,9 @@ def main():
         rng.shuffle(batches)
         tot, cnt = 0.0, 0
         for pi, idx in batches:
-            b = to_device(pools['train'][pi], idx)
+            pool = pools['train'][pi]
+            b = to_device(pool, idx)
+            b['cnd'] = torch.tensor(pool['cnd'][idx], device=DEVICE)
             logits, spreds = model(b, teacher_prob=tf_prob)
             bce = F.binary_cross_entropy_with_logits(logits[:, HIST - 1:SEQ], b['qt'], pos_weight=pos_weight)
             w = torch.ones(SEQ, device=DEVICE)
@@ -162,14 +169,21 @@ def main():
                 break
 
     model.load_state_dict(best_state)
-    val = evaluate(model, pools['val'], [best_tau])
-    test = evaluate(model, pools['test'], [best_tau])
-    report = {'val': val, 'test': test, 'best_tau': float(best_tau),
+    from tau_select import bootstrap_tau, collect_entries, percond_eval, score_matrix
+    Sv, cv = score_matrix(collect_entries(model, pools['val'], True))
+    St, ct = score_matrix(collect_entries(model, pools['test'], True))
+    taus = {c: bootstrap_tau(Sv[cv == c])[0] for c in (0, 1)}
+    val_eq, val_per = percond_eval(Sv, cv, taus)
+    test_eq, test_per = percond_eval(St, ct, taus)
+    report = {'val': {'equal_mean_iou': val_eq, 'onset_iou': val_per[0], 'ongoing_iou': val_per[1]},
+              'test': {'equal_mean_iou': test_eq, 'onset_iou': test_per[0], 'ongoing_iou': test_per[1]},
+              'tau_onset': taus[0], 'tau_ongoing': taus[1], 'best_epoch_tau': float(best_tau),
               'train_positive_rate': float(p_pos),
               'holdout': {'train': '2030-06-01..2030-12-31', 'val': '2031-01-01..2031-01-31', 'test': '2031-02-01..2031-02-28'}}
     OUT_DIR.mkdir(exist_ok=True)
     (OUT_DIR / 't2_report.json').write_text(json.dumps(report, indent=2))
-    torch.save({'model': model.state_dict(), 'tau': best_tau}, CACHE_DIR / 't2_model.pt')
+    torch.save({'model': model.state_dict(), 'tau': best_tau,
+                'tau_onset': taus[0], 'tau_ongoing': taus[1]}, CACHE_DIR / 't2_model.pt')
     print(json.dumps(report, indent=2), flush=True)
     submission.generate()
 
