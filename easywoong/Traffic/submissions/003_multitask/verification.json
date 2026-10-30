@@ -1,0 +1,39 @@
+{
+  "unit_tests": {
+    "command": "conda run --no-capture-output -n easypj python -m unittest discover -s tests -v",
+    "passed": 8,
+    "failed": 0,
+    "checks": [
+      "hidden target values cannot influence interpolation or features",
+      "cache equals original data on one day from all ten panels",
+      "queue feature lags, horizons and missingness",
+      "prediction split alignment",
+      "missing/duplicate prediction rejection",
+      "nonfinite/negative/null prediction rejection",
+      "task/ID mapping rejection",
+      "NNLS active nonnegative constraint with analytic solution"
+    ]
+  },
+  "full_release": {
+    "panels": 10,
+    "daily_grids": 6070,
+    "original_values_changed": false
+  },
+  "submission": {
+    "rows": 6980503,
+    "missing_predictions": 0,
+    "extra_predictions": 0,
+    "duplicate_ids": 0,
+    "exact_template_id_task_order": true,
+    "csv_roundtrip_exact": true
+  },
+  "task4_solver": {
+    "converged_panel_splits": 20,
+    "max_projected_kkt_gradient": 2.8350832792511937e-09
+  },
+  "task1_predictions": {
+    "panel_regime_split_groups": 60,
+    "max_fraction_flow_below_50": 0.0,
+    "note": "Range diagnostic only, not the hidden Task 3 score"
+  }
+}

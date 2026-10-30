@@ -1,0 +1,15 @@
+{
+  "ref": 57468122,
+  "date": "2026-10-21T05:46:42.823000",
+  "description": "005_imputeformer: imputeformer 24 steps, epoch 20, residual 1.0; queue/ODME fixed from 003 | d115e24ad0f0",
+  "file_name": "submission.csv",
+  "status": "COMPLETE",
+  "public_score": "0.78138",
+  "private_score": null,
+  "error_description": null,
+  "competition": "2026-ieee-big-data-traffic-flow-bench",
+  "submission_sha256": "d115e24ad0f067499541f6ae3715706548553e24be7b03bb72b6d0f747d42fd0",
+  "checked_utc": "2026-10-21T05:49:20.066051+00:00",
+  "previous_best_public_score": 0.76826,
+  "delta_from_previous_best": 0.01311999999999991
+}

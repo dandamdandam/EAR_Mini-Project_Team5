@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "preprocessing": {
+    "cache": "cache/preprocessed_v1",
+    "frequency_minutes": 5,
+    "steps_per_day": 288,
+    "preserve_native_missingness": true,
+    "flow_units_in_model": "vehicles/hour/lane",
+    "task1_targets": "official sample_submission_state.csv only"
+  },
+  "task1": {
+    "model": "Interpolation + STAEformer residual",
+    "train_dates": ["2030-06-01", "2031-02-28"],
+    "epochs": 5,
+    "history_steps": 24,
+    "synthetic_mask_probabilities": [0.2, 0.3, 0.5],
+    "residual_blend": 1.0,
+    "selection_reference": "runs/staeformer_residual_001/selection_best.json",
+    "physical_gpu": 9
+  },
+  "task2": {
+    "model": "CatBoostClassifier",
+    "fit_dates": ["2030-06-01", "2030-12-31"],
+    "selection_dates": ["2031-01-01", "2031-01-31"],
+    "proxy_holdout_dates": ["2031-02-01", "2031-02-28"],
+    "final_refit_dates": ["2030-06-01", "2031-02-28"],
+    "max_iterations": 400,
+    "depth": 7,
+    "learning_rate": 0.08,
+    "history_steps": 12,
+    "forecast_steps": [1, 2, 3, 4, 5, 6],
+    "label": "eligible observed speed <= 0.6 * free_speed (proxy, not official truth)",
+    "thread_count": 8
+  },
+  "task3": {
+    "output": "Task 1 state rows",
+    "local_full_score_available": false
+  },
+  "task4": {
+    "model": "prior-regularized nonnegative least squares",
+    "lambda": 0.05,
+    "selection": "fixed organizer baseline, no hidden-reference fitting"
+  },
+  "predict_splits": ["validation", "private"],
+  "competition": "2026-ieee-big-data-traffic-flow-bench"
+}

@@ -1,0 +1,7 @@
+{
+  "selected_epoch": 20,
+  "selected_blend": 1.0,
+  "selection_s_state": 0.9431234777219585,
+  "trained_to_epoch": 20,
+  "stop_reason": "max_epochs"
+}

@@ -1,0 +1,9 @@
+{
+  "loss": 0.008805409997479969,
+  "reconstruction": 0.00831815133483975,
+  "fourier": 0.04872587015972382,
+  "supervised_cells": 107368,
+  "batches": 13,
+  "seconds": 1.4,
+  "peak_cuda_memory_mb": 1478.18212890625
+}

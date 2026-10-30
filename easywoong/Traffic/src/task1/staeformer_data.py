@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+import os
 from pathlib import Path
 
 import numpy as np
@@ -113,6 +114,20 @@ def _mainline_file(panel: str, split: str, day: str, masked: bool) -> Path:
 
 def load_day(panel: str, split: str, day: str, info: PanelInfo, *, masked: bool) -> Day:
     file = _mainline_file(panel, split, day, masked)
+    cache_root = os.environ.get("TFB_DAILY_CACHE")
+    if cache_root:
+        cache = Path(cache_root) / "mainline" / panel / split / ("masked" if masked else "raw") / f"{day}.npz"
+        with np.load(cache, allow_pickle=False) as data:
+            if (int(data["cache_version"]) != 1 or int(data["source_size"]) != file.stat().st_size
+                    or int(data["source_mtime_ns"]) != file.stat().st_mtime_ns
+                    or not np.array_equal(data["global_node_ids"], info.global_node_ids)
+                    or not np.array_equal(data["lanes"], info.lanes)):
+                raise ValueError(f"Stale or incompatible daily cache: {cache}")
+            speed, flow, eligible = data["speed"], data["flow_lane"], data["eligible"]
+        stamps = tuple(f"{day}T{slot // 12:02}:{slot % 12 * 5:02}:00Z" for slot in range(STEPS_PER_DAY))
+        if speed.shape != (STEPS_PER_DAY, info.n_links) or flow.shape != speed.shape or eligible.shape != speed.shape:
+            raise ValueError(f"Invalid daily cache shape: {cache}")
+        return Day(panel, day, speed, flow, eligible, stamps)
     raw = pl.read_parquet(
         file,
         columns=[

@@ -18,6 +18,9 @@ venv/
 # local model checkpoints and quick smoke results
 runs/**/*.pt
 runs/**/*.cbm
+runs/**/*.log
+submissions/**/*.log
+submissions/**/*.zip
 runs/staeformer_residual_smoke/
 runs/catboost_residual_smoke/
 runs/imputeformer_cpu_smoke/

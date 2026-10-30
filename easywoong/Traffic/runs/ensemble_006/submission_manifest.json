@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-21T05:45:52.210782+00:00",
+  "config_sha256": "8cb1df912c4ef15fa26dbb2e8e5982d2f2ea89cc54ce1241642401b617913b2c",
+  "max_additional_submissions": 3,
+  "reference_submission": "submissions/003_multitask",
+  "payloads": [
+    {
+      "kind": "staeformer",
+      "directory": "submissions/004_staeformer",
+      "sha256": "3738daaddb542d54ed94d611edd06f13bf7bd1dbb30c65b769b92a50905ba998",
+      "rows": 6980503
+    },
+    {
+      "kind": "imputeformer",
+      "directory": "submissions/005_imputeformer",
+      "sha256": "d115e24ad0f067499541f6ae3715706548553e24be7b03bb72b6d0f747d42fd0",
+      "rows": 6980503
+    },
+    {
+      "kind": "ensemble",
+      "directory": "submissions/006_ensemble",
+      "sha256": "ce814d5cce760de67a15baeed9593da09cd873e29333e280f962971b7297eeee",
+      "rows": 6980503
+    }
+  ],
+  "all_payloads_prepared_before_upload": true
+}

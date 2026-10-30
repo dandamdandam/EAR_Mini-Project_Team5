@@ -56,6 +56,6 @@ conda run -n easypj python -m src.task1.train_staeformer
 
 ## 해석 시 주의
 
-무작위 독립 mask는 공식 R1/R2/R3의 연속·공간 결측 패턴과 다르다. 특히 긴 결측 구간에서 성능 차이가 날 수 있다. 로컬 테스트가 끝난 뒤 9개월 전체로 재학습한 모델을 만들 수 있지만, 그 모델의 2월 점수는 더 이상 독립 테스트 점수가 아니다.
+공식 R1/R2/R3는 셀 단위 20%·30%·50% 마스크다. 실제 masked 입력에는 원래 결측과 Task 2 보호 구간의 추가 공백도 포함되므로, 학습 중 만든 무작위 mask만으로 입력의 모든 결측 패턴을 재현하지는 못한다. 로컬 테스트가 끝난 뒤 9개월 전체로 재학습한 모델의 2월 점수는 더 이상 독립 테스트 점수가 아니다. 전체 Task 제출용 재학습은 [003 실험](multitask-003.md)에 정리했다.
 
 참고: [STAEformer 논문](https://arxiv.org/abs/2308.10425), [원저자 공개 구현](https://github.com/XDZhelheim/STAEformer).

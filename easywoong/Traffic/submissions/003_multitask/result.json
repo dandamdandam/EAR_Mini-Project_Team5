@@ -1,0 +1,15 @@
+{
+  "ref": 57461328,
+  "date": "2026-10-21T02:08:15.567000",
+  "description": "003_multitask: STAEformer 5ep + CatBoost queue + NNLS .05 | 260905d04c12",
+  "file_name": "submission.csv",
+  "status": "COMPLETE",
+  "public_score": "0.76826",
+  "private_score": null,
+  "error_description": null,
+  "competition": "2026-ieee-big-data-traffic-flow-bench",
+  "submission_sha256": "260905d04c12519d2468348b019377715d6c27f1b648cbb871f396f15564f061",
+  "checked_utc": "2026-10-21T02:09:40.136903+00:00",
+  "previous_best_public_score": 0.76089,
+  "delta_from_previous_best": 0.007370000000000099
+}

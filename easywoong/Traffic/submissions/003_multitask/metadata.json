@@ -1,0 +1,527 @@
+{
+  "created_utc": "2026-10-21T02:07:23.671244+00:00",
+  "git_commit": "aee5b084df43e6aefc84d3d9e994d1a5bc5b981a",
+  "git_status": " M .gitignore\n M submissions/002_interp/metadata.json\n?? README.md\n?? configs/\n?? docs/multitask-003.md\n?? docs/spin-h.md\n?? docs/staeformer-residual.md\n?? docs/task1-model-comparison.md\n?? eda.ipynb\n?? eda_assets/\n?? requirements.txt\n?? runs/\n?? src/preprocess/\n?? src/submit/kaggle_submit.py\n?? src/submit/multitask.py\n?? src/submit/run_multitask.py\n?? src/task1/IMPUTEFORMER_LICENSE\n?? src/task1/catboost_features.py\n?? src/task1/catboost_residual.py\n?? src/task1/compare_baseline_feb.py\n?? src/task1/compare_experiments.py\n?? src/task1/final_staeformer.py\n?? src/task1/imputeformer_model.py\n?? src/task1/spin_h_LICENSE\n?? src/task1/spin_h_graph.py\n?? src/task1/spin_h_model.py\n?? src/task1/spin_h_train.py\n?? src/task1/staeformer_data.py\n?? src/task1/staeformer_residual.py\n?? src/task1/train_imputeformer.py\n?? src/task1/train_staeformer.py\n?? src/task2/catboost_queue.py\n?? src/task4/regularized_odme.py\n?? submissions/003_multitask/\n?? tests/\n",
+  "rows": 6980503,
+  "coverage": {
+    "state": {
+      "rows": 6735795,
+      "speed_kmh": {
+        "min": 5.0,
+        "max": 127.4849853515625,
+        "nonzero": 6735795
+      },
+      "flow_vph": {
+        "min": 350.3616943359375,
+        "max": 11728.78125,
+        "nonzero": 6735795
+      }
+    },
+    "queue": {
+      "rows": 174000,
+      "queue_pred": {
+        "min": 0,
+        "max": 1,
+        "nonzero": 11650
+      }
+    },
+    "odme": {
+      "rows": 70708,
+      "path_flow": {
+        "min": 0.0,
+        "max": 2375.4990320717857,
+        "nonzero": 28684
+      }
+    }
+  },
+  "coverage_by_panel_split": [
+    {
+      "split": "validation",
+      "panel": "D12_I405_N",
+      "len": 203337,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I5_N",
+      "len": 588468,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I5_S",
+      "len": 219222,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I405_N",
+      "len": 673133,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I5_N",
+      "len": 543092,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I10_E",
+      "len": 337512,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I10_W",
+      "len": 203699,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I210_W",
+      "len": 205973,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I405_N",
+      "len": 746097,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I10_E",
+      "len": 303294,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I405_S",
+      "len": 107416,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I210_W",
+      "len": 158901,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I405_S",
+      "len": 93718,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I210_E",
+      "len": 581196,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I5_S",
+      "len": 204957,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I10_W",
+      "len": 233060,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I210_E",
+      "len": 625014,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I405_N",
+      "len": 192164,
+      "task": "state"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I405_S",
+      "len": 271939,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I405_S",
+      "len": 243603,
+      "task": "state"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I10_W",
+      "len": 6420,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I405_S",
+      "len": 6540,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I10_W",
+      "len": 6420,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I5_N",
+      "len": 15480,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I5_N",
+      "len": 15480,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I210_E",
+      "len": 17820,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I210_W",
+      "len": 4860,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I210_W",
+      "len": 4860,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I5_S",
+      "len": 6000,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I10_E",
+      "len": 8760,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I405_S",
+      "len": 6540,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I5_S",
+      "len": 6000,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I210_E",
+      "len": 17820,
+      "task": "queue"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I405_N",
+      "len": 21120,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I10_E",
+      "len": 8760,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I405_N",
+      "len": 21120,
+      "task": "queue"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I210_W",
+      "len": 3321,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I405_S",
+      "len": 4656,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I10_W",
+      "len": 5050,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I405_N",
+      "len": 4560,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I405_S",
+      "len": 630,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I5_N",
+      "len": 4278,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I10_W",
+      "len": 5050,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I405_S",
+      "len": 630,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I210_E",
+      "len": 2628,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I210_W",
+      "len": 3321,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I405_N",
+      "len": 4560,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I5_S",
+      "len": 5050,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I210_E",
+      "len": 2628,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I5_S",
+      "len": 5050,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I405_N",
+      "len": 903,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I10_E",
+      "len": 4278,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D7_I405_S",
+      "len": 4656,
+      "task": "odme"
+    },
+    {
+      "split": "validation",
+      "panel": "D12_I405_N",
+      "len": 903,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D12_I5_N",
+      "len": 4278,
+      "task": "odme"
+    },
+    {
+      "split": "private",
+      "panel": "D7_I10_E",
+      "len": 4278,
+      "task": "odme"
+    }
+  ],
+  "submission_sha256": "260905d04c12519d2468348b019377715d6c27f1b648cbb871f396f15564f061",
+  "preprocessing": {
+    "cache_version": 1,
+    "smoke": false,
+    "panels": [
+      "D7_I10_E",
+      "D7_I10_W",
+      "D7_I210_E",
+      "D7_I210_W",
+      "D7_I405_N",
+      "D7_I405_S",
+      "D12_I5_N",
+      "D12_I5_S",
+      "D12_I405_N",
+      "D12_I405_S"
+    ],
+    "total_nodes": 1583,
+    "daily_grids": 6070,
+    "task2_windows": 240,
+    "manifest_sha256": "cdb0a10a36b60e151f6635da3ef0e786913567782a758f3ee248b182c54420fd",
+    "source_contract_sha256": "bc73b9c0c6d89c55e10d71831a5769d2ea316b76c11f505d470210b46b677022",
+    "task1_scaling": {
+      "speed_divisor": 120.0,
+      "flow_per_lane_divisor": 2000.0,
+      "type": "fixed physical scales, same as selected STAEformer experiment"
+    },
+    "raw_values_modified": false,
+    "missing_values_filled": false,
+    "seconds": 211.96
+  },
+  "models": {
+    "task1": "Interpolation + STAEformer residual, 5 epochs, all nine train months",
+    "task2": "CatBoost, causal 12-step history, six horizons; train-observation proxy labels",
+    "task3": "Same state predictions, no separate output or hidden-label calibration",
+    "task4": "Nonnegative least squares, weak-prior L2 lambda=0.05"
+  },
+  "artifacts": {
+    "state": {
+      "run_directory": "runs/staeformer_final_003",
+      "files": {
+        "config.json": {
+          "bytes": 1533,
+          "sha256": "f33676f9057e92e637ff616cbabc2b3af43d44b7b7c6411f1b99c4b033a613cd"
+        },
+        "final.pt": {
+          "bytes": 8846895,
+          "sha256": "88274ab5a4dd3503bc9910e072473bd122836b54e8492dedf230029b813c7b38"
+        },
+        "history.json": {
+          "bytes": 828,
+          "sha256": "bb4af623467eb9ab311d1f50616d921e37d83b85b90ea3158264dd290cfae473"
+        },
+        "last.pt": {
+          "bytes": 26552992,
+          "sha256": "ff5f356bf157b31fc0cabf03ceba17075857993074c0d7064d1deef75072dde8"
+        },
+        "prediction_diagnostics.json": {
+          "bytes": 14382,
+          "sha256": "c1c2799fffeaa91cff8eb0507d7bf62fa8665caec66e71bf9306c30d453fa47e"
+        },
+        "predictions_private.parquet": {
+          "bytes": 28802018,
+          "sha256": "e63637d2d9e3aa036dc955d737c7658306692644ff36ec62018dfc0e3a723811"
+        },
+        "predictions_validation.parquet": {
+          "bytes": 30174854,
+          "sha256": "ef3983fe7a1eda54b88c9155fdb7a2343c9e7e7758d0358e57ccb97fe9e1195b"
+        }
+      }
+    },
+    "queue": {
+      "run_directory": "runs/queue_catboost_003",
+      "files": {
+        "config.json": {
+          "bytes": 1744,
+          "sha256": "e94189c033b816d2ce63f2e27ab2c9781adfbecfccd0300b362e219292617738"
+        },
+        "coverage.json": {
+          "bytes": 131,
+          "sha256": "90187df68f2a33a698006f004c22260f5ec8bb587fb4808d83f26c614e4e9de8"
+        },
+        "final.cbm": {
+          "bytes": 26150928,
+          "sha256": "5d9aeec09a9a7236a45913b229380c68661c43019697c5fd0a9154cf08b639e6"
+        },
+        "fit_windows.parquet": {
+          "bytes": 14543,
+          "sha256": "917f0a6e39e71cde2f268d8b49f4816e3d10b195fd2fb08012d8410840e5e0da"
+        },
+        "predictions_private.parquet": {
+          "bytes": 678905,
+          "sha256": "dd9fb63e5af5f9d291a2cd3faf93291447c198d9e1f04e321ab7a8bd739d3f2d"
+        },
+        "predictions_validation.parquet": {
+          "bytes": 678235,
+          "sha256": "7ff492827d228fcc01220dd99af4e06fb25ddbdb7792fc6f62a14ac5e9a2b7cd"
+        },
+        "proxy_holdout.json": {
+          "bytes": 4176,
+          "sha256": "dcc2cf0c6f77194da2b1b71b1056adbdeb4d615e23aabfbd2c0e48196a0c051a"
+        },
+        "selection.cbm": {
+          "bytes": 25445288,
+          "sha256": "8a4993bcd90fe22be801ed77a4a7b3ed6d130e5d69f06cab83ba669da1881428"
+        },
+        "selection_result.json": {
+          "bytes": 6026,
+          "sha256": "e1c1af049be86334c80e8f3eb701da186f365655f77837366a4571659c69040f"
+        },
+        "selection_windows.parquet": {
+          "bytes": 4783,
+          "sha256": "ea27f1df46c2de72f805f8019ab2cd16f76ad55a1857dc35ed88b7644825d373"
+        }
+      }
+    },
+    "odme": {
+      "run_directory": "runs/odme_003",
+      "files": {
+        "coverage.json": {
+          "bytes": 128,
+          "sha256": "494cdd241612b152cc8c4ecd4b8d07b8551368956b81abecbb3a44d100364f86"
+        },
+        "diagnostics.json": {
+          "bytes": 17204,
+          "sha256": "b6e683bf2af70d76f9519da4a3be9f2d0a6effd2885b4b1cb73545369f82eadf"
+        },
+        "predictions_private.parquet": {
+          "bytes": 169194,
+          "sha256": "4699c172c8fc404ecca91551d58c635f1c53ae55cde23ac8899290afdb50be26"
+        },
+        "predictions_validation.parquet": {
+          "bytes": 170112,
+          "sha256": "e6cd3a13fd175a5799102830c7702e8c4fa949a5c0872515b4d932621542dc76"
+        }
+      }
+    }
+  },
+  "python": "3.11.15 (main, Mar 11 2026, 17:20:07) [GCC 14.3.0]",
+  "packages": {
+    "numpy": "2.4.4",
+    "pandas": "3.0.6",
+    "polars": "1.41.1",
+    "scipy": "1.17.1",
+    "torch": "2.5.1",
+    "catboost": "1.2.10",
+    "kaggle": "2.2.2"
+  },
+  "seed": 42,
+  "external_training_data": null,
+  "metric_note": "Full-train refits have no independent February score. Queue local metrics use proxy labels.",
+  "reproduce": "conda run --no-capture-output -n easypj python -m src.submit.run_multitask --id 004",
+  "seconds": 14.52
+}
