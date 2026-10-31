@@ -2,7 +2,7 @@ import numpy as np
 import torch
 
 from ode import DEVICE
-from utils import EXTRA_DROP, HIST, QUEUE_RATIO, SEQ, STEP_OFFSETS, DAY_STEPS, interp_fill
+from utils import EXTRA_DROP, HIST, HOR, QUEUE_RATIO, SEQ, STEP_OFFSETS, DAY_STEPS, interp_fill
 
 
 @torch.no_grad()
@@ -41,6 +41,20 @@ def static_features(z):
     return np.stack([z['lanes'] / 5.0, z['length'], vf / 120.0,
                      (mp - mp.min()) / max(float(np.ptp(mp)), 1e-3),
                      z['n_or'], z['n_fr'], gap_prev, gap_next], axis=-1).astype(np.float32)
+
+
+def prop_map(q0, milepost, wave):
+    N, L = q0.shape
+    arr = np.where(q0, 0.0, np.inf).astype(np.float32)
+    if L > 1:
+        gap = np.diff(milepost).astype(np.float32)
+        wc = np.clip(wave, 10.0, 40.0)
+        wgap = 0.5 * (wc[:-1] + wc[1:])
+        step_min = gap / np.maximum(wgap, 1e-3) * 60.0
+        for j in range(L - 2, -1, -1):
+            arr[:, j] = np.minimum(arr[:, j], arr[:, j + 1] + step_min[j])
+    t_k = np.arange(1, HOR + 1, dtype=np.float32) * 5.0
+    return np.clip((t_k[None, :, None] + 2.5 - arr[:, None, :]) / 5.0, 0.0, 1.0).astype(np.float32)
 
 
 def assemble_pool(panel, z, wy_feats, t0s, cond, rng, day_model, day_ctx, offset, dows, fill_clim=None):

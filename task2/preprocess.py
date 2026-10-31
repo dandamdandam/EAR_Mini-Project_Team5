@@ -21,13 +21,7 @@ def pivot_to_grid(df, grid, links, value_col):
 def build_panel(panel):
     net_dir = KROOT / 'corridors' / panel / 'network'
     fd = pd.read_csv(net_dir / 'fd_parameters.csv', dtype={'link_id': str}).drop_duplicates('link_id').set_index('link_id')
-    topo = pd.read_csv(net_dir / 'lwr_mainline_topology.csv', dtype=str).drop_duplicates('mainline_link_id').set_index('mainline_link_id')
-    mainline = set(topo.index)
-
-    def count_conn(l, col):
-        if l not in mainline:
-            return 0.0
-        return float(sum(1 for e in str(topo.at[l, col]).split(';') if e.startswith('CONN')))
+    ramp = pd.read_csv(net_dir / 'ramp_attachment_map.csv', dtype=str)
 
     grid = time_grid()
 
@@ -55,8 +49,11 @@ def build_panel(panel):
     lanes = fd.loc[links, 'lanes'].to_numpy(np.float32)
     length = fd.loc[links, 'length_km'].to_numpy(np.float32)
     milepost = np.array([milepost_map[l] for l in links], dtype=np.float32)
-    n_or = np.array([count_conn(l, 'incoming_link_ids') for l in links], dtype=np.float32)
-    n_fr = np.array([count_conn(l, 'outgoing_link_ids') for l in links], dtype=np.float32)
+    kc = fd.loc[links, 'critical_density'].to_numpy(np.float32)
+    kj = fd.loc[links, 'k_jam'].to_numpy(np.float32)
+    wave = cap / np.maximum(kj - kc, 1.0)
+    n_or = np.array([(ramp[(ramp.nearest_mainline_link_id == l) & (ramp.ramp_type == 'OR')]).shape[0] for l in links], dtype=np.float32)
+    n_fr = np.array([(ramp[(ramp.nearest_mainline_link_id == l) & (ramp.ramp_type == 'FR')]).shape[0] for l in links], dtype=np.float32)
 
     s_true = interp_fill(s_raw)
     dead = ~np.isfinite(s_true).all(axis=0)
@@ -80,7 +77,7 @@ def build_panel(panel):
     np.savez_compressed(
         CACHE_DIR / f'{panel}.npz',
         links=links_arr, vf=vf, cap=cap, lanes=lanes, length=length, milepost=milepost,
-        n_or=n_or, n_fr=n_fr, s_raw=s_raw, f_raw=f_raw, s_true=s_true, q=q,
+        n_or=n_or, n_fr=n_fr, wave=wave, s_raw=s_raw, f_raw=f_raw, s_true=s_true, q=q,
         hourly=hourly, daily=daily, hourly3=hourly3,
     )
     print(f'[{panel}] links={len(links)} grid={s_raw.shape[0]} nan_speed={np.isnan(s_raw).mean():.3f} queue_rate={q.mean():.4f}', flush=True)

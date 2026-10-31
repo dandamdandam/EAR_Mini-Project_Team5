@@ -8,13 +8,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import preprocess
-from features import static_features
+from features import prop_map, static_features
 from model import QueueNet
 from ode import DEVICE, dow_array
 from tau_select import (bootstrap_tau, collect_entries, evaluate_general,
                         panel_climatology, percond_eval, score_matrix, to_device_ex)
-from utils import (CACHE_DIR, DAY_STEPS, EXTRA_DROP, HIST, OUT_DIR, SCORED_PANELS, SEQ,
-                   STEP_OFFSETS, date_to_day_index, interp_fill, load_panel, split_day_range)
+from utils import (CACHE_DIR, DAY_STEPS, EXTRA_DROP, HIST, OUT_DIR, QUEUE_RATIO, SCORED_PANELS,
+                   SEQ, STEP_OFFSETS, date_to_day_index, interp_fill, load_panel, split_day_range)
 
 SEED = 123
 EXTRA_PANELS = ['D12_I405_N', 'D12_I405_S']
@@ -74,10 +74,13 @@ def assemble_noode(panel, z, t0s, cond, rng, fill_clim):
     slot_h = (t0s[:, None] + np.arange(-12, 1)[None, :]) % DAY_STEPS
     sph[nanmask] = fill_clim[slot_h][nanmask]
     flh[~np.isfinite(flh)] = 0.4
-    return {'sph': sph.astype(np.float32), 'obs': obs, 'flh': flh.astype(np.float32), 'tf': tf,
+    pool = {'sph': sph.astype(np.float32), 'obs': obs, 'flh': flh.astype(np.float32), 'tf': tf,
             'odd': np.zeros((N, SEQ, L), np.float32), 'wy': np.zeros((N, L, 2), np.float32),
             'stat': static_features(z), 'st': st.astype(np.float32),
             'qt': qt, 'cond': cond, 'panel': panel}
+    if 'wave' in z:
+        pool['prp'] = prop_map(sph[:, -1] <= QUEUE_RATIO, z['milepost'], z['wave'])
+    return pool
 
 
 def build_all_pools(rng):
@@ -133,10 +136,16 @@ def main():
     ap.add_argument('--batch', type=int, default=8)
     ap.add_argument('--epochs', type=int, default=30)
     ap.add_argument('--patience', type=int, default=8)
+    ap.add_argument('--no-nb', action='store_true')
+    ap.add_argument('--phys', action='store_true')
     ARGS = ap.parse_args()
     torch.manual_seed(SEED)
     rng = np.random.default_rng(SEED)
     pools = build_all_pools(rng)
+    if ARGS.no_nb:
+        for split in pools:
+            for pool in pools[split]:
+                pool['stat'] = pool['stat'][:, :6]
 
     qt_all = np.concatenate([pl['qt'].reshape(-1) for pl in pools['train']])
     p_pos = qt_all.mean()
@@ -144,7 +153,8 @@ def main():
     n_train = sum(len(pl['qt']) for pl in pools['train'])
     print(f'train windows={n_train} positive rate={p_pos:.4f} pos_weight={pos_weight.item():.2f}', flush=True)
 
-    model = QueueNet(c_in=20 + 2 * ARGS.pe_freqs, no_ode=True, pe_freqs=ARGS.pe_freqs).to(DEVICE)
+    model = QueueNet(c_in=(16 if ARGS.no_nb else 20) + 2 * ARGS.pe_freqs, no_ode=True,
+                     pe_freqs=ARGS.pe_freqs, no_nb=ARGS.no_nb, phys=ARGS.phys).to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
     tau_grid = np.arange(0.2, 0.81, 0.05)
 
@@ -198,6 +208,8 @@ def main():
     test_eq, test_per = percond_eval(St, ct, taus)
     report = {'run': ARGS.run_name, 'seed': SEED, 'best_epoch': best_epoch,
               'pe_freqs': ARGS.pe_freqs, 'batch': ARGS.batch, 'max_epochs': ARGS.epochs,
+              'no_nb': ARGS.no_nb, 'phys': ARGS.phys,
+              'alpha': float(torch.sigmoid(model.alpha)) if ARGS.phys else None,
               'train_windows': n_train, 'train_positive_rate': float(p_pos),
               'caps': {'onset': ARGS.on_cap, 'ongoing': ARGS.og_cap, 'neg': ARGS.ng_cap,
                        'og_frac': ARGS.og_frac, 'ng_frac': ARGS.ng_frac},
@@ -208,7 +220,7 @@ def main():
     sweep_dir = OUT_DIR / 'sweep'
     sweep_dir.mkdir(parents=True, exist_ok=True)
     (sweep_dir / f'{ARGS.run_name}.json').write_text(json.dumps(report, indent=2))
-    torch.save({'model': best_state, 'tau': best_tau,
+    torch.save({'model': best_state, 'tau': best_tau, 'no_nb': ARGS.no_nb, 'phys': ARGS.phys,
                 'tau_onset': taus[0], 'tau_ongoing': taus[1]}, sweep_dir / f'{ARGS.run_name}.pt')
     print(json.dumps(report, indent=2), flush=True)
 

@@ -63,6 +63,8 @@ def to_device_ex(pool, idx, use_cond=False):
     b = to_device(pool, idx)
     if use_cond:
         b['cnd'] = torch.tensor(pool['cnd'][idx], device=DEVICE)
+    if 'prp' in pool:
+        b['prp'] = torch.tensor(pool['prp'][idx], device=DEVICE)
     return b
 
 

@@ -5,10 +5,14 @@ from utils import HIST, QUEUE_RATIO, SEQ
 
 
 class QueueNet(nn.Module):
-    def __init__(self, c_in=19, h=128, no_ode=False, pe_freqs=0):
+    def __init__(self, c_in=19, h=128, no_ode=False, pe_freqs=0, no_nb=False, phys=False):
         super().__init__()
         self.no_ode = no_ode
         self.pe_freqs = pe_freqs
+        self.no_nb = no_nb
+        self.phys = phys
+        if phys:
+            self.alpha = nn.Parameter(torch.tensor(1.4))
         self.proj = nn.Sequential(nn.Linear(c_in, 64), nn.SiLU())
         self.g1 = nn.GRUCell(64, h)
         self.g2 = nn.GRUCell(h, h)
@@ -44,9 +48,12 @@ class QueueNet(nn.Module):
                 ob = torch.zeros_like(sp)
                 fl = flh[:, HIST - 1]
             qn = (sp <= QUEUE_RATIO).float()
-            nb_a = torch.cat([sp[:, :1], sp[:, :-1]], 1)
-            nb_b = torch.cat([sp[:, 1:], sp[:, -1:]], 1)
-            xdyn = torch.stack([sp, ob, fl, qn, nb_a, nb_b], -1)
+            if self.no_nb:
+                xdyn = torch.stack([sp, ob, fl, qn], -1)
+            else:
+                nb_a = torch.cat([sp[:, :1], sp[:, :-1]], 1)
+                nb_b = torch.cat([sp[:, 1:], sp[:, -1:]], 1)
+                xdyn = torch.stack([sp, ob, fl, qn, nb_a, nb_b], -1)
             xt = tf[:, i].unsqueeze(1).expand(B, L, 4)
             xo = odd[:, i].unsqueeze(-1)
             xs = stat.unsqueeze(0).expand(B, L, stat.shape[-1])
@@ -63,4 +70,10 @@ class QueueNet(nn.Module):
             sp_hat = torch.clamp(self.head_s(h2), 0.0, 1.5).reshape(B, L)
             spreds.append(sp_hat)
             sp_prev = sp_hat
-        return torch.stack(logits, 1), torch.stack(spreds, 1)
+        out = torch.stack(logits, 1)
+        prp = b.get('prp') if self.phys else None
+        if prp is not None:
+            pm = torch.sigmoid(out[:, HIST - 1:SEQ])
+            pc = (1 - (1 - pm) * (1 - torch.sigmoid(self.alpha) * prp)).clamp(1e-6, 1 - 1e-6)
+            out = torch.cat([out[:, :HIST - 1], torch.log(pc) - torch.log1p(-pc)], 1)
+        return out, torch.stack(spreds, 1)
