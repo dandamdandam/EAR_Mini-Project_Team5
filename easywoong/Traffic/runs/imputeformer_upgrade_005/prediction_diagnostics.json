@@ -1,0 +1,602 @@
+[
+  {
+    "split": "validation",
+    "panel": "D7_I10_E",
+    "regime": "R3",
+    "rows": 188543,
+    "speed_min": 15.295711517333984,
+    "speed_max": 123.11432647705078,
+    "flow_min": 635.0415649414062,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I10_E",
+    "regime": "R2",
+    "rows": 85044,
+    "speed_min": 6.537448883056641,
+    "speed_max": 122.70059967041016,
+    "flow_min": 793.4805908203125,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I10_E",
+    "regime": "R1",
+    "rows": 63925,
+    "speed_min": 13.365999221801758,
+    "speed_max": 121.94530487060547,
+    "flow_min": 657.9736938476562,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I10_W",
+    "regime": "R2",
+    "rows": 76695,
+    "speed_min": 30.58011245727539,
+    "speed_max": 121.7535400390625,
+    "flow_min": 661.2991943359375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I10_W",
+    "regime": "R1",
+    "rows": 50947,
+    "speed_min": 6.586581707000732,
+    "speed_max": 121.80117797851562,
+    "flow_min": 680.99365234375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I10_W",
+    "regime": "R3",
+    "rows": 105418,
+    "speed_min": 34.47848892211914,
+    "speed_max": 121.77758026123047,
+    "flow_min": 633.0675659179688,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I210_E",
+    "regime": "R3",
+    "rows": 289596,
+    "speed_min": 11.060556411743164,
+    "speed_max": 122.08505249023438,
+    "flow_min": 453.58807373046875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I210_E",
+    "regime": "R2",
+    "rows": 153404,
+    "speed_min": 8.594894409179688,
+    "speed_max": 122.07551574707031,
+    "flow_min": 476.13433837890625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I210_E",
+    "regime": "R1",
+    "rows": 182014,
+    "speed_min": 20.1507625579834,
+    "speed_max": 122.13154602050781,
+    "flow_min": 483.9444580078125,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I210_W",
+    "regime": "R3",
+    "rows": 132249,
+    "speed_min": 6.581334114074707,
+    "speed_max": 122.40906524658203,
+    "flow_min": 557.2261962890625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I210_W",
+    "regime": "R2",
+    "rows": 52546,
+    "speed_min": 11.568428039550781,
+    "speed_max": 122.14055633544922,
+    "flow_min": 569.2352905273438,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I210_W",
+    "regime": "R1",
+    "rows": 21178,
+    "speed_min": 20.679195404052734,
+    "speed_max": 121.91748809814453,
+    "flow_min": 579.9677734375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I405_N",
+    "regime": "R2",
+    "rows": 317336,
+    "speed_min": 7.02259635925293,
+    "speed_max": 123.63040924072266,
+    "flow_min": 633.765869140625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I405_N",
+    "regime": "R1",
+    "rows": 201440,
+    "speed_min": 15.012207984924316,
+    "speed_max": 122.57816314697266,
+    "flow_min": 692.5240478515625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I405_N",
+    "regime": "R3",
+    "rows": 154357,
+    "speed_min": 14.72149658203125,
+    "speed_max": 123.32087707519531,
+    "flow_min": 767.7568359375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I405_S",
+    "regime": "R1",
+    "rows": 28426,
+    "speed_min": 10.797781944274902,
+    "speed_max": 121.9686050415039,
+    "flow_min": 815.3635864257812,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I405_S",
+    "regime": "R2",
+    "rows": 77415,
+    "speed_min": 7.973153114318848,
+    "speed_max": 125.46956634521484,
+    "flow_min": 717.5838623046875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D7_I405_S",
+    "regime": "R3",
+    "rows": 166098,
+    "speed_min": 5.837432861328125,
+    "speed_max": 125.58114624023438,
+    "flow_min": 707.2185668945312,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I5_N",
+    "regime": "R1",
+    "rows": 88520,
+    "speed_min": 7.478072166442871,
+    "speed_max": 122.43795776367188,
+    "flow_min": 474.9326477050781,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I5_N",
+    "regime": "R2",
+    "rows": 219247,
+    "speed_min": 5.983222007751465,
+    "speed_max": 122.22453308105469,
+    "flow_min": 472.3453369140625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I5_N",
+    "regime": "R3",
+    "rows": 280701,
+    "speed_min": 8.608579635620117,
+    "speed_max": 123.05760192871094,
+    "flow_min": 478.169921875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I5_S",
+    "regime": "R2",
+    "rows": 37980,
+    "speed_min": 8.293802261352539,
+    "speed_max": 122.27301025390625,
+    "flow_min": 610.3157958984375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I5_S",
+    "regime": "R1",
+    "rows": 60767,
+    "speed_min": 6.477819919586182,
+    "speed_max": 122.87373352050781,
+    "flow_min": 640.0638427734375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I5_S",
+    "regime": "R3",
+    "rows": 120475,
+    "speed_min": 12.482044219970703,
+    "speed_max": 123.29248046875,
+    "flow_min": 546.854248046875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I405_N",
+    "regime": "R2",
+    "rows": 70319,
+    "speed_min": 8.387212753295898,
+    "speed_max": 121.19808959960938,
+    "flow_min": 377.2642822265625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I405_N",
+    "regime": "R1",
+    "rows": 35116,
+    "speed_min": 8.74425983428955,
+    "speed_max": 121.17072296142578,
+    "flow_min": 379.1314697265625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I405_N",
+    "regime": "R3",
+    "rows": 97902,
+    "speed_min": 8.122686386108398,
+    "speed_max": 121.30521392822266,
+    "flow_min": 396.36492919921875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I405_S",
+    "regime": "R1",
+    "rows": 22992,
+    "speed_min": 7.150635719299316,
+    "speed_max": 121.35494995117188,
+    "flow_min": 458.28515625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I405_S",
+    "regime": "R2",
+    "rows": 32207,
+    "speed_min": 16.601839065551758,
+    "speed_max": 121.69078063964844,
+    "flow_min": 445.2794494628906,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "validation",
+    "panel": "D12_I405_S",
+    "regime": "R3",
+    "rows": 38519,
+    "speed_min": 8.732742309570312,
+    "speed_max": 121.86564636230469,
+    "flow_min": 425.57818603515625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I10_E",
+    "regime": "R2",
+    "rows": 114940,
+    "speed_min": 6.840911865234375,
+    "speed_max": 122.10768127441406,
+    "flow_min": 697.1848754882812,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I10_E",
+    "regime": "R1",
+    "rows": 63088,
+    "speed_min": 7.699718475341797,
+    "speed_max": 122.0574722290039,
+    "flow_min": 801.6878662109375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I10_E",
+    "regime": "R3",
+    "rows": 125266,
+    "speed_min": 11.851993560791016,
+    "speed_max": 123.06958770751953,
+    "flow_min": 746.7935180664062,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I10_W",
+    "regime": "R3",
+    "rows": 69726,
+    "speed_min": 11.004659652709961,
+    "speed_max": 121.66130828857422,
+    "flow_min": 674.8108520507812,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I10_W",
+    "regime": "R2",
+    "rows": 69568,
+    "speed_min": 34.45806121826172,
+    "speed_max": 121.74689483642578,
+    "flow_min": 644.2484130859375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I10_W",
+    "regime": "R1",
+    "rows": 64405,
+    "speed_min": 8.1080961227417,
+    "speed_max": 121.60099792480469,
+    "flow_min": 709.5118408203125,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I210_E",
+    "regime": "R2",
+    "rows": 230281,
+    "speed_min": 14.322684288024902,
+    "speed_max": 121.94023132324219,
+    "flow_min": 454.9118957519531,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I210_E",
+    "regime": "R1",
+    "rows": 154820,
+    "speed_min": 7.747480392456055,
+    "speed_max": 122.46503448486328,
+    "flow_min": 428.5560302734375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I210_E",
+    "regime": "R3",
+    "rows": 196095,
+    "speed_min": 9.792248725891113,
+    "speed_max": 121.60914611816406,
+    "flow_min": 482.12078857421875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I210_W",
+    "regime": "R2",
+    "rows": 63701,
+    "speed_min": 5.213977813720703,
+    "speed_max": 122.11981964111328,
+    "flow_min": 586.807373046875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I210_W",
+    "regime": "R1",
+    "rows": 41851,
+    "speed_min": 20.789817810058594,
+    "speed_max": 122.14649200439453,
+    "flow_min": 553.9981689453125,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I210_W",
+    "regime": "R3",
+    "rows": 53349,
+    "speed_min": 20.777992248535156,
+    "speed_max": 121.88943481445312,
+    "flow_min": 603.5047607421875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I405_N",
+    "regime": "R2",
+    "rows": 251863,
+    "speed_min": 14.030570983886719,
+    "speed_max": 126.38323211669922,
+    "flow_min": 655.8786010742188,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I405_N",
+    "regime": "R3",
+    "rows": 338979,
+    "speed_min": 10.550226211547852,
+    "speed_max": 123.21883392333984,
+    "flow_min": 634.266845703125,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I405_N",
+    "regime": "R1",
+    "rows": 155255,
+    "speed_min": 6.147773265838623,
+    "speed_max": 124.2082748413086,
+    "flow_min": 604.3988037109375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I405_S",
+    "regime": "R3",
+    "rows": 117557,
+    "speed_min": 12.820106506347656,
+    "speed_max": 127.5129623413086,
+    "flow_min": 548.6654052734375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I405_S",
+    "regime": "R2",
+    "rows": 92845,
+    "speed_min": 8.120492935180664,
+    "speed_max": 122.92250061035156,
+    "flow_min": 608.1799926757812,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D7_I405_S",
+    "regime": "R1",
+    "rows": 33201,
+    "speed_min": 8.40622329711914,
+    "speed_max": 124.95020294189453,
+    "flow_min": 650.6112670898438,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I5_N",
+    "regime": "R3",
+    "rows": 225811,
+    "speed_min": 14.58578872680664,
+    "speed_max": 122.03752899169922,
+    "flow_min": 512.9260864257812,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I5_N",
+    "regime": "R2",
+    "rows": 216964,
+    "speed_min": 12.924973487854004,
+    "speed_max": 122.33052062988281,
+    "flow_min": 493.6069030761719,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I5_N",
+    "regime": "R1",
+    "rows": 100317,
+    "speed_min": 10.0938081741333,
+    "speed_max": 121.6899185180664,
+    "flow_min": 543.6201782226562,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I5_S",
+    "regime": "R1",
+    "rows": 51301,
+    "speed_min": 5.499027252197266,
+    "speed_max": 122.23069763183594,
+    "flow_min": 568.577880859375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I5_S",
+    "regime": "R2",
+    "rows": 65540,
+    "speed_min": 5.430938243865967,
+    "speed_max": 122.22306823730469,
+    "flow_min": 507.41094970703125,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I5_S",
+    "regime": "R3",
+    "rows": 88116,
+    "speed_min": 15.988889694213867,
+    "speed_max": 122.22872161865234,
+    "flow_min": 585.390380859375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I405_N",
+    "regime": "R1",
+    "rows": 47166,
+    "speed_min": 7.118524551391602,
+    "speed_max": 121.27947235107422,
+    "flow_min": 372.47186279296875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I405_N",
+    "regime": "R2",
+    "rows": 47091,
+    "speed_min": 12.871744155883789,
+    "speed_max": 121.27862548828125,
+    "flow_min": 407.01422119140625,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I405_N",
+    "regime": "R3",
+    "rows": 97907,
+    "speed_min": 11.432138442993164,
+    "speed_max": 121.31573486328125,
+    "flow_min": 430.80804443359375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I405_S",
+    "regime": "R1",
+    "rows": 9705,
+    "speed_min": 10.94300365447998,
+    "speed_max": 121.38406372070312,
+    "flow_min": 452.36712646484375,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I405_S",
+    "regime": "R2",
+    "rows": 34838,
+    "speed_min": 8.624212265014648,
+    "speed_max": 121.40498352050781,
+    "flow_min": 454.0029296875,
+    "flow_below_50_fraction": 0.0
+  },
+  {
+    "split": "private",
+    "panel": "D12_I405_S",
+    "regime": "R3",
+    "rows": 62873,
+    "speed_min": 8.366992950439453,
+    "speed_max": 122.24053955078125,
+    "flow_min": 363.1701354980469,
+    "flow_below_50_fraction": 0.0
+  }
+]

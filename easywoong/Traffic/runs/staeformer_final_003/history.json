@@ -1,0 +1,47 @@
+[
+  {
+    "epoch": 1,
+    "train": {
+      "loss": 0.008969181189814296,
+      "supervised_cells": 31705930,
+      "batches": 10647,
+      "seconds": 256.9
+    }
+  },
+  {
+    "epoch": 2,
+    "train": {
+      "loss": 0.007728088265795454,
+      "supervised_cells": 31802743,
+      "batches": 10647,
+      "seconds": 256.0
+    }
+  },
+  {
+    "epoch": 3,
+    "train": {
+      "loss": 0.006796758014138813,
+      "supervised_cells": 31556343,
+      "batches": 10647,
+      "seconds": 244.9
+    }
+  },
+  {
+    "epoch": 4,
+    "train": {
+      "loss": 0.006009665663350837,
+      "supervised_cells": 31935503,
+      "batches": 10647,
+      "seconds": 241.4
+    }
+  },
+  {
+    "epoch": 5,
+    "train": {
+      "loss": 0.005442235316493869,
+      "supervised_cells": 31305256,
+      "batches": 10647,
+      "seconds": 240.1
+    }
+  }
+]

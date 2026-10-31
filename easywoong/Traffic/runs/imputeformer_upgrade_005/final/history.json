@@ -1,0 +1,242 @@
+[
+  {
+    "epoch": 1,
+    "lr": 0.0003,
+    "train": {
+      "loss": 0.008204162780258149,
+      "reconstruction": 0.00770480211520947,
+      "fourier": 0.04993606742049715,
+      "supervised_cells": 31705930,
+      "batches": 3549,
+      "seconds": 164.8
+    }
+  },
+  {
+    "epoch": 2,
+    "lr": 0.0002981587759593675,
+    "train": {
+      "loss": 0.006092803489779931,
+      "reconstruction": 0.005596892502670712,
+      "fourier": 0.04959109992014853,
+      "supervised_cells": 31802743,
+      "batches": 3549,
+      "seconds": 164.22
+    }
+  },
+  {
+    "epoch": 3,
+    "lr": 0.0002926853276295856,
+    "train": {
+      "loss": 0.005491577822973348,
+      "reconstruction": 0.004994639993799152,
+      "fourier": 0.049693783907508116,
+      "supervised_cells": 31556343,
+      "batches": 3549,
+      "seconds": 167.07
+    }
+  },
+  {
+    "epoch": 4,
+    "lr": 0.000283728956412876,
+    "train": {
+      "loss": 0.005039334102433464,
+      "reconstruction": 0.004543554764716286,
+      "fourier": 0.04957793498424212,
+      "supervised_cells": 31935503,
+      "batches": 3549,
+      "seconds": 165.58
+    }
+  },
+  {
+    "epoch": 5,
+    "lr": 0.0002715339687685131,
+    "train": {
+      "loss": 0.004861806588551744,
+      "reconstruction": 0.004363165809431401,
+      "fourier": 0.04986407905478262,
+      "supervised_cells": 31305256,
+      "batches": 3549,
+      "seconds": 165.82
+    }
+  },
+  {
+    "epoch": 6,
+    "lr": 0.00025643301216947504,
+    "train": {
+      "loss": 0.004655742227823215,
+      "reconstruction": 0.004156591715378678,
+      "fourier": 0.04991505245712377,
+      "supervised_cells": 31349062,
+      "batches": 3549,
+      "seconds": 171.77
+    }
+  },
+  {
+    "epoch": 7,
+    "lr": 0.00023883800134652763,
+    "train": {
+      "loss": 0.004539000672575055,
+      "reconstruction": 0.0040426145545722015,
+      "fourier": 0.04963861285212963,
+      "supervised_cells": 31936390,
+      "batches": 3549,
+      "seconds": 164.04
+    }
+  },
+  {
+    "epoch": 8,
+    "lr": 0.00021922888232815089,
+    "train": {
+      "loss": 0.0043556074333563274,
+      "reconstruction": 0.0038579903110084685,
+      "fourier": 0.049761713497503884,
+      "supervised_cells": 31687869,
+      "batches": 3549,
+      "seconds": 163.72
+    }
+  },
+  {
+    "epoch": 9,
+    "lr": 0.00019814054076400787,
+    "train": {
+      "loss": 0.004238658393556162,
+      "reconstruction": 0.003742625223677603,
+      "fourier": 0.049603318347656356,
+      "supervised_cells": 31770452,
+      "batches": 3549,
+      "seconds": 163.66
+    }
+  },
+  {
+    "epoch": 10,
+    "lr": 0.00017614821163876486,
+    "train": {
+      "loss": 0.004212310702057332,
+      "reconstruction": 0.003715732237761495,
+      "fourier": 0.049657847720917095,
+      "supervised_cells": 31885883,
+      "batches": 3549,
+      "seconds": 163.64
+    }
+  },
+  {
+    "epoch": 11,
+    "lr": 0.00015385178836123514,
+    "train": {
+      "loss": 0.003989971390434684,
+      "reconstruction": 0.003492811862415665,
+      "fourier": 0.049715953658312474,
+      "supervised_cells": 31557581,
+      "batches": 3549,
+      "seconds": 163.58
+    }
+  },
+  {
+    "epoch": 12,
+    "lr": 0.00013185945923599213,
+    "train": {
+      "loss": 0.003950548609127801,
+      "reconstruction": 0.0034530295685113632,
+      "fourier": 0.04975190483294256,
+      "supervised_cells": 31703299,
+      "batches": 3549,
+      "seconds": 163.7
+    }
+  },
+  {
+    "epoch": 13,
+    "lr": 0.00011077111767184915,
+    "train": {
+      "loss": 0.003855143784318242,
+      "reconstruction": 0.0033577480613497302,
+      "fourier": 0.049739573568008094,
+      "supervised_cells": 31591274,
+      "batches": 3549,
+      "seconds": 163.6
+    }
+  },
+  {
+    "epoch": 14,
+    "lr": 9.116199865347241e-05,
+    "train": {
+      "loss": 0.0037850094722768086,
+      "reconstruction": 0.0032868244839521577,
+      "fourier": 0.049818500128357646,
+      "supervised_cells": 31458654,
+      "batches": 3549,
+      "seconds": 163.75
+    }
+  },
+  {
+    "epoch": 15,
+    "lr": 7.356698783052497e-05,
+    "train": {
+      "loss": 0.003806341588111796,
+      "reconstruction": 0.003308444908980988,
+      "fourier": 0.04978966887713034,
+      "supervised_cells": 31764099,
+      "batches": 3549,
+      "seconds": 163.69
+    }
+  },
+  {
+    "epoch": 16,
+    "lr": 5.846603123148688e-05,
+    "train": {
+      "loss": 0.003713020730571581,
+      "reconstruction": 0.0032144844622006277,
+      "fourier": 0.04985362780040052,
+      "supervised_cells": 31646065,
+      "batches": 3549,
+      "seconds": 163.76
+    }
+  },
+  {
+    "epoch": 17,
+    "lr": 4.6271043587123986e-05,
+    "train": {
+      "loss": 0.0036413165949186416,
+      "reconstruction": 0.003144296746925074,
+      "fourier": 0.04970198560167372,
+      "supervised_cells": 31655244,
+      "batches": 3549,
+      "seconds": 163.65
+    }
+  },
+  {
+    "epoch": 18,
+    "lr": 3.7314672370414325e-05,
+    "train": {
+      "loss": 0.00360020499482435,
+      "reconstruction": 0.0031022390428309663,
+      "fourier": 0.049796595999212906,
+      "supervised_cells": 31594008,
+      "batches": 3549,
+      "seconds": 163.73
+    }
+  },
+  {
+    "epoch": 19,
+    "lr": 3.1841224040632484e-05,
+    "train": {
+      "loss": 0.0036008973436138297,
+      "reconstruction": 0.003104187347776367,
+      "fourier": 0.04967100047392235,
+      "supervised_cells": 31782895,
+      "batches": 3549,
+      "seconds": 163.66
+    }
+  },
+  {
+    "epoch": 20,
+    "lr": 2.9999999999999997e-05,
+    "train": {
+      "loss": 0.003578177885697913,
+      "reconstruction": 0.0030810143188603934,
+      "fourier": 0.04971635816636597,
+      "supervised_cells": 31787447,
+      "batches": 3549,
+      "seconds": 163.84
+    }
+  }
+]

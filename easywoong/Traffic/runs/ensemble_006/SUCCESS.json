@@ -1,0 +1,4 @@
+{
+  "staeformer_weight": 0.25,
+  "imputeformer_weight": 0.75
+}

@@ -1,0 +1,181 @@
+{
+  "label_type": "Proxy: eligible noisy train speed <= 0.60 * free_speed; NOT official queue labels",
+  "model": {
+    "proxy_iou": 0.757789122221825,
+    "windows": 396,
+    "known_label_rows": 340933,
+    "positive_fraction": 0.06770538492900365,
+    "by_panel_condition": [
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_ongoing",
+        "iou": 0.8422974382062237
+      },
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_onset",
+        "iou": 0.631183567490796
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_ongoing",
+        "iou": 0.8531126856409672
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_onset",
+        "iou": 0.5454747887440194
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_ongoing",
+        "iou": 0.7732414660571171
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_onset",
+        "iou": 0.7673282840153063
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_ongoing",
+        "iou": 0.7971932617646903
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_onset",
+        "iou": 0.744487456987457
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_ongoing",
+        "iou": 0.9546448921448921
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_onset",
+        "iou": 0.8734969400539656
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_ongoing",
+        "iou": 0.8432924367777231
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_onset",
+        "iou": 0.5531862931652848
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_ongoing",
+        "iou": 0.9074597484153777
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_onset",
+        "iou": 0.6071446002643481
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_ongoing",
+        "iou": 0.8117625760449377
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_onset",
+        "iou": 0.619319519776094
+      }
+    ]
+  },
+  "persistence": {
+    "proxy_iou": 0.3834039735316458,
+    "windows": 396,
+    "known_label_rows": 340933,
+    "positive_fraction": 0.06770538492900365,
+    "by_panel_condition": [
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_ongoing",
+        "iou": 0.6490983350337178
+      },
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_ongoing",
+        "iou": 0.7743156430847145
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_ongoing",
+        "iou": 0.7214997723272539
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_ongoing",
+        "iou": 0.7432589126999064
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_ongoing",
+        "iou": 0.9586445689386867
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_ongoing",
+        "iou": 0.7881884167383747
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_ongoing",
+        "iou": 0.7688293033141601
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_ongoing",
+        "iou": 0.7306286243695184
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_onset",
+        "iou": 0.0
+      }
+    ]
+  },
+  "threshold": 0.4,
+  "independent_of_final_refit": true
+}

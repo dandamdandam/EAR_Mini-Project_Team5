@@ -1,0 +1,35 @@
+{
+  "device": "cpu",
+  "panel": "D12_I405_S",
+  "train_day": "2030-06-01",
+  "selection_day": "2031-01-01",
+  "training_window_shape": [
+    1,
+    24,
+    44,
+    2
+  ],
+  "training_hidden_cells": 262,
+  "training_mask_probability": 0.3,
+  "same_day_visit_probabilities": [
+    0.3,
+    0.5,
+    0.2
+  ],
+  "training_loss": 2.691391944885254,
+  "finite_gradients": true,
+  "official_target_cells_on_day": 2890,
+  "regime": "R2",
+  "official_window_prediction_finite": true,
+  "graph_edges": 86,
+  "smoke_scaler": {
+    "mean": [
+      0.0,
+      0.0
+    ],
+    "std": [
+      120.0,
+      2000.0
+    ]
+  }
+}
