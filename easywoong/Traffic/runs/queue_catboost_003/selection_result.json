@@ -1,0 +1,278 @@
+{
+  "label_type": "Proxy: eligible noisy train speed <= 0.60 * free_speed; NOT official queue labels",
+  "fit_dates": [
+    "2030-06-01",
+    "2030-12-31"
+  ],
+  "selection_dates": [
+    "2031-01-01",
+    "2031-01-31"
+  ],
+  "fit_rows": 2636285,
+  "fit_windows": 3061,
+  "selected_iterations": 400,
+  "selected_threshold": 0.4,
+  "threshold_scores": {
+    "0.15": 0.7074754314778176,
+    "0.20": 0.7298078093696561,
+    "0.25": 0.7460472102020815,
+    "0.30": 0.7563735769274598,
+    "0.35": 0.767560289236552,
+    "0.40": 0.772287075429509,
+    "0.45": 0.7712684180274458,
+    "0.50": 0.7611533737703365,
+    "0.55": 0.7438162412154019,
+    "0.60": 0.7185740549262724,
+    "0.65": 0.6931805629371831,
+    "0.70": 0.6666642852954029,
+    "0.75": 0.635376220458342
+  },
+  "selection": {
+    "proxy_iou": 0.772287075429509,
+    "windows": 454,
+    "known_label_rows": 388436,
+    "positive_fraction": 0.06892769980125427,
+    "by_panel_condition": [
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_ongoing",
+        "iou": 0.8704533172468099
+      },
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_onset",
+        "iou": 0.6585115656922496
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_ongoing",
+        "iou": 0.844228541874908
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_onset",
+        "iou": 0.49172689741700143
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_ongoing",
+        "iou": 0.7871561864409378
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_onset",
+        "iou": 0.8024876177933603
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_ongoing",
+        "iou": 0.8925628071836593
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_onset",
+        "iou": 0.6500566763110016
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_ongoing",
+        "iou": 0.960226705283132
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_onset",
+        "iou": 0.9332230683084574
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_ongoing",
+        "iou": 0.8860045534222866
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_onset",
+        "iou": 0.6284037128522881
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_ongoing",
+        "iou": 0.8535400026525446
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_onset",
+        "iou": 0.6341864018334606
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_ongoing",
+        "iou": 0.7927489810444996
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_onset",
+        "iou": 0.6710761715155467
+      }
+    ]
+  },
+  "selection_persistence": {
+    "proxy_iou": 0.39400113449499485,
+    "windows": 454,
+    "known_label_rows": 388436,
+    "positive_fraction": 0.06892769980125427,
+    "by_panel_condition": [
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_ongoing",
+        "iou": 0.723429089729618
+      },
+      {
+        "panel": "D12_I5_N",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_ongoing",
+        "iou": 0.7820309099478672
+      },
+      {
+        "panel": "D12_I5_S",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_ongoing",
+        "iou": 0.7083986283819672
+      },
+      {
+        "panel": "D7_I10_E",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_ongoing",
+        "iou": 0.8751195978009816
+      },
+      {
+        "panel": "D7_I10_W",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_ongoing",
+        "iou": 0.9540070131051855
+      },
+      {
+        "panel": "D7_I210_E",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_ongoing",
+        "iou": 0.8213674101167686
+      },
+      {
+        "panel": "D7_I210_W",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_ongoing",
+        "iou": 0.7634118632065856
+      },
+      {
+        "panel": "D7_I405_N",
+        "condition": "queue_onset",
+        "iou": 0.0
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_ongoing",
+        "iou": 0.6762536396309442
+      },
+      {
+        "panel": "D7_I405_S",
+        "condition": "queue_onset",
+        "iou": 0.0
+      }
+    ]
+  },
+  "feature_names": [
+    "panel_id",
+    "node_id",
+    "v_lag1",
+    "v_lag2",
+    "v_lag3",
+    "v_lag6",
+    "v_lag12",
+    "q_lag1",
+    "q_lag2",
+    "q_lag3",
+    "q_lag6",
+    "q_lag12",
+    "occ_lag1",
+    "occ_lag2",
+    "occ_lag3",
+    "occ_lag6",
+    "occ_lag12",
+    "v_last",
+    "v_mean",
+    "v_min",
+    "v_std",
+    "v_slope",
+    "q_last",
+    "q_mean",
+    "q_min",
+    "q_std",
+    "q_slope",
+    "occ_last",
+    "occ_mean",
+    "occ_min",
+    "occ_std",
+    "occ_slope",
+    "v_mean3",
+    "v_slope3",
+    "v_mean6",
+    "v_slope6",
+    "observed_fraction",
+    "last_age",
+    "quality_mean",
+    "lanes",
+    "free_speed",
+    "capacity_lane",
+    "length",
+    "position",
+    "v_up1",
+    "slope_up1",
+    "v_down1",
+    "slope_down1",
+    "v_up2",
+    "slope_up2",
+    "v_down2",
+    "slope_down2",
+    "history_has_queue",
+    "panel_last_queue_fraction",
+    "panel_min_last_speed",
+    "time_sin",
+    "time_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "horizon_steps"
+  ],
+  "params": {
+    "iterations": 400,
+    "depth": 7,
+    "learning_rate": 0.08,
+    "loss_function": "Logloss",
+    "random_seed": 42,
+    "thread_count": 8,
+    "allow_writing_files": false,
+    "l2_leaf_reg": 5.0
+  }
+}

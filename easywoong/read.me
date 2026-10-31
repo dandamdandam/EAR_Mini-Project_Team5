@@ -1,0 +1,31 @@
+# TrafficFlowBench 2026 작업 파일
+
+2026 IEEE Big Data Traffic Flow Bench의 EDA, 모델 코드, 실험 설정과 제출 결과를 `Traffic/`에 정리했습니다. 원본 데이터·캐시·학습 가중치·대용량 제출 CSV는 포함하지 않았습니다.
+
+| 경로 | 내용 |
+| --- | --- |
+| [`Traffic/결과보고서.md`](Traffic/결과보고서.md) | 사용 모델, 실험 기간, 로컬 평가와 Kaggle 제출 결과 |
+| [`Traffic/README.md`](Traffic/README.md) | 실행 방법과 주요 파일 위치 |
+| `Traffic/eda.ipynb`, `Traffic/eda_assets/` | 데이터 구조와 Task별 입력 EDA |
+| `Traffic/src/preprocess/` | 날짜·링크 정렬, 결측·품질 보존, 검증된 캐시 생성 |
+| `Traffic/src/task1/` | 보간, STAEformer, ImputeFormer, residual 학습·앙상블 |
+| `Traffic/src/task2/`, `Traffic/src/task4/` | CatBoost 정체 예측과 경로 유량 최적화 |
+| `Traffic/src/submit/` | Task 예측 결합, 제출 파일 검증과 업로드 코드 |
+| `Traffic/configs/`, `Traffic/tests/` | 실험 설정과 핵심 검사 코드 |
+| `Traffic/runs/`, `Traffic/submissions/` | 작은 JSON 학습·선택 기록과 Kaggle 제출 영수증 |
+| `Traffic/presentation/` | 영문 발표 PPT와 PDF 미리보기, 결과보고서 그림 |
+
+## 주요 결과
+
+| 제출 | Task 1 모델 | Kaggle Public |
+| --- | --- | ---: |
+| 003 | 보간 + 기존 STAEformer residual | 0.76826 |
+| 004 | 보간 + 개선 STAEformer residual | 0.77803 |
+| 005 | 보간 + ImputeFormer residual | 0.78138 |
+| 006 | STAEformer 25% + ImputeFormer 75% | **0.78255** |
+
+004~006에서는 Task 2와 Task 4 제출값을 003과 동일하게 고정했습니다. 따라서 Public 총점 차이는 상태 복원(Task 1)과 그 출력을 사용하는 물리 정합성(Task 3)의 합산 효과입니다. 자세한 기간 분할과 점수 해석은 [결과보고서](Traffic/결과보고서.md)에 적었습니다.
+
+## 실행 데이터
+
+대회 원본 데이터를 `Traffic/data/kaggle_public/`에 두고 `Traffic/`에서 실행합니다. 학교 서버에서는 `easypj` 환경과 **물리 GPU 9**를 사용합니다. Task 1 모델 코드는 공개 STAEformer·ImputeFormer 구조를 이 데이터의 residual 복원에 맞춰 바꾼 구현이며, 원저작자 라이선스 파일은 `Traffic/src/task1/`에 포함했습니다.

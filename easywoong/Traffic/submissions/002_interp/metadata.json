@@ -1,0 +1,22 @@
+{
+  "git_commit": "78cd15cec79bc1de0c4d64ead6e1b831de50f04f",
+  "rows": 6980503,
+  "coverage": {
+    "state": {
+      "rows": 6735795,
+      "nonzero": 6735795
+    },
+    "queue": {
+      "rows": 174000,
+      "nonzero": 10602
+    },
+    "odme": {
+      "rows": 70708,
+      "nonzero": 70708
+    }
+  },
+  "task1": "spatio-temporal interpolation (0.85 temporal / 0.15 spatial), profile fallback",
+  "task2": "persistence from last observed speed, threshold 0.60 * free-flow",
+  "task4": "released weak prior, unchanged",
+  "seconds": 27.2
+}

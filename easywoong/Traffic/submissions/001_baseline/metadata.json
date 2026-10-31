@@ -1,0 +1,22 @@
+{
+  "git_commit": "b99f1a572d034345988584dbdb6018a5c95828b8",
+  "rows": 6980503,
+  "coverage": {
+    "state": {
+      "rows": 6735795,
+      "nonzero": 6735795
+    },
+    "queue": {
+      "rows": 174000,
+      "nonzero": 10602
+    },
+    "odme": {
+      "rows": 70708,
+      "nonzero": 70708
+    }
+  },
+  "task1": "historical profile fitted on the masked layer",
+  "task2": "persistence from last observed speed, threshold 0.60 * free-flow",
+  "task4": "released weak prior, unchanged",
+  "seconds": 9.8
+}

@@ -1,0 +1,7 @@
+split,condition,windows,history_coverage
+private,queue_ongoing,40,0.766545
+private,queue_onset,40,0.76226
+train,queue_ongoing,40,0.76506
+train,queue_onset,40,0.7631275000000001
+validation,queue_ongoing,40,0.763195
+validation,queue_onset,40,0.7600475

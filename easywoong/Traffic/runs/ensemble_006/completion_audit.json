@@ -1,0 +1,44 @@
+{
+  "checked_utc": "2026-10-21T05:50:20.448893+00:00",
+  "authorized_additional_submissions": 3,
+  "completed_additional_submissions": 3,
+  "all_csv_hashes_verified": true,
+  "all_queue_and_odme_values_identical_to_003": true,
+  "all_three_payloads_frozen_before_first_upload": true,
+  "training_physical_gpu": 9,
+  "unit_tests_passed": 14,
+  "best": {
+    "kind": "ensemble",
+    "directory": "submissions/006_ensemble",
+    "ref": 57468140,
+    "status": "COMPLETE",
+    "public_score": 0.78255,
+    "sha256": "ce814d5cce760de67a15baeed9593da09cd873e29333e280f962971b7297eeee"
+  },
+  "submissions": [
+    {
+      "kind": "staeformer",
+      "directory": "submissions/004_staeformer",
+      "ref": 57468104,
+      "status": "COMPLETE",
+      "public_score": 0.77803,
+      "sha256": "3738daaddb542d54ed94d611edd06f13bf7bd1dbb30c65b769b92a50905ba998"
+    },
+    {
+      "kind": "imputeformer",
+      "directory": "submissions/005_imputeformer",
+      "ref": 57468122,
+      "status": "COMPLETE",
+      "public_score": 0.78138,
+      "sha256": "d115e24ad0f067499541f6ae3715706548553e24be7b03bb72b6d0f747d42fd0"
+    },
+    {
+      "kind": "ensemble",
+      "directory": "submissions/006_ensemble",
+      "ref": 57468140,
+      "status": "COMPLETE",
+      "public_score": 0.78255,
+      "sha256": "ce814d5cce760de67a15baeed9593da09cd873e29333e280f962971b7297eeee"
+    }
+  ]
+}

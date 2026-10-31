@@ -1,0 +1,11 @@
+panel,mainline_links,ramps,paths,length_km_sum,lanes_min,lanes_max,task2,train_unmasked,validation_unmasked,base_od_file
+D12_I405_N,89,54,903,45.33,3.0,8.0,false,true,false,false
+D12_I405_S,44,47,630,32.7,4.0,8.0,false,true,false,false
+D12_I5_N,258,112,4278,72.59,3.0,6.0,true,true,false,false
+D12_I5_S,100,107,5050,44.96,3.0,6.0,true,true,false,false
+D7_I10_E,146,116,4278,55.57,1.0,6.0,true,true,false,false
+D7_I10_W,107,115,5050,49.09,3.0,6.0,true,true,false,false
+D7_I210_E,297,98,2628,81.33,1.0,6.0,true,true,false,false
+D7_I210_W,81,107,3321,44.46,2.0,6.0,true,true,false,false
+D7_I405_N,352,103,4560,67.21,3.0,6.0,true,true,false,false
+D7_I405_S,109,113,4656,41.97,3.0,6.0,true,true,false,false

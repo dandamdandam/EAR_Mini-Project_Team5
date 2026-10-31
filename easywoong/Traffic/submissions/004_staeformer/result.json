@@ -1,0 +1,15 @@
+{
+  "ref": 57468104,
+  "date": "2026-10-21T05:46:18.757000",
+  "description": "004_staeformer: staeformer 48 steps, epoch 20, residual 1.0; queue/ODME fixed from 003 | 3738daaddb54",
+  "file_name": "submission.csv",
+  "status": "COMPLETE",
+  "public_score": "0.77803",
+  "private_score": null,
+  "error_description": null,
+  "competition": "2026-ieee-big-data-traffic-flow-bench",
+  "submission_sha256": "3738daaddb542d54ed94d611edd06f13bf7bd1dbb30c65b769b92a50905ba998",
+  "checked_utc": "2026-10-21T05:49:19.495820+00:00",
+  "previous_best_public_score": 0.76826,
+  "delta_from_previous_best": 0.009769999999999945
+}

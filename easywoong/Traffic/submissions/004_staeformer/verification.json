@@ -1,0 +1,16 @@
+{
+  "reference": "submissions/003_multitask",
+  "reference_sha256": "260905d04c12519d2468348b019377715d6c27f1b648cbb871f396f15564f061",
+  "queue_and_odme_identical": true,
+  "unchanged_nonstate_rows": 244708,
+  "state_changes": {
+    "speed_kmh": {
+      "changed_rows": 6723327,
+      "mean_absolute_change": 0.4656523570472325
+    },
+    "flow_vph": {
+      "changed_rows": 6728763,
+      "mean_absolute_change": 38.28175609290809
+    }
+  }
+}

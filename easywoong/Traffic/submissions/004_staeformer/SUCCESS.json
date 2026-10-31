@@ -1,0 +1,29 @@
+{
+  "cache_version": 1,
+  "smoke": false,
+  "panels": [
+    "D7_I10_E",
+    "D7_I10_W",
+    "D7_I210_E",
+    "D7_I210_W",
+    "D7_I405_N",
+    "D7_I405_S",
+    "D12_I5_N",
+    "D12_I5_S",
+    "D12_I405_N",
+    "D12_I405_S"
+  ],
+  "total_nodes": 1583,
+  "daily_grids": 6070,
+  "task2_windows": 240,
+  "manifest_sha256": "cdb0a10a36b60e151f6635da3ef0e786913567782a758f3ee248b182c54420fd",
+  "source_contract_sha256": "bc73b9c0c6d89c55e10d71831a5769d2ea316b76c11f505d470210b46b677022",
+  "task1_scaling": {
+    "speed_divisor": 120.0,
+    "flow_per_lane_divisor": 2000.0,
+    "type": "fixed physical scales, same as selected STAEformer experiment"
+  },
+  "raw_values_modified": false,
+  "missing_values_filled": false,
+  "seconds": 211.96
+}
