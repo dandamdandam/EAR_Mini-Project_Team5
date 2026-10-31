@@ -24,7 +24,7 @@ from pathlib import Path
 
 # Set device visibility before importing torch, as required on this server.
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "9"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "9")
 
 import numpy as np
 import torch

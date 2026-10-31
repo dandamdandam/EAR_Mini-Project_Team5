@@ -1,8 +1,0 @@
-{
-  "loss": 0.008835323093747753,
-  "reconstruction": 0.008347910234572629,
-  "fourier": 0.04874128985302877,
-  "supervised_cells": 107368,
-  "batches": 13,
-  "seconds": 2.1
-}

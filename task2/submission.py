@@ -127,7 +127,7 @@ def build_panel_split(panel, z, split, models, qmodel, val_daily, cfg):
     b = {'sph': torch.tensor(sph, device=DEVICE), 'obs': torch.tensor(obs, device=DEVICE),
          'flh': torch.tensor(flh, device=DEVICE), 'tf': torch.tensor(tf, device=DEVICE),
          'odd': torch.tensor(odd, device=DEVICE), 'wy': torch.tensor(wy, device=DEVICE),
-         'stat': torch.tensor(static_features(z), device=DEVICE),
+         'stat': torch.tensor(static_features(z)[:, :cfg['stat_cols']] if cfg['stat_cols'] else static_features(z), device=DEVICE),
          'st': torch.zeros((N, SEQ, L), device=DEVICE)}
     if cfg['use_cond']:
         b['cnd'] = torch.tensor(np.stack([is_onset, ~is_onset], -1).astype(np.float32), device=DEVICE)
@@ -169,10 +169,12 @@ def generate(splits=('validation', 'private'), out=str(DEFAULT_OUT)):
 
     ck2 = torch.load(CACHE_DIR / 't2_model.pt', weights_only=False)
     c_in = int(ck2['model']['proj.0.weight'].shape[1])
-    cfg = {'use_cond': c_in in (23, 20), 'no_ode': c_in in (20, 18),
+    cfg = {'use_cond': c_in in (23, 20, 26, 28), 'no_ode': c_in in (20, 18, 26, 28),
+           'pe_freqs': 4 if c_in in (26, 28) else 0,
+           'stat_cols': 6 if c_in in (18, 26) else None,
            'tau_onset': float(ck2.get('tau_onset', ck2['tau'])),
            'tau_ongoing': float(ck2.get('tau_ongoing', ck2['tau']))}
-    qmodel = QueueNet(c_in=c_in, no_ode=cfg['no_ode']).to(DEVICE)
+    qmodel = QueueNet(c_in=c_in, no_ode=cfg['no_ode'], pe_freqs=cfg['pe_freqs']).to(DEVICE)
     qmodel.load_state_dict(ck2['model'])
     qmodel.eval()
     print(f"loaded model c_in={c_in} tau_onset={cfg['tau_onset']:.2f} tau_ongoing={cfg['tau_ongoing']:.2f}", flush=True)

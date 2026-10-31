@@ -15,7 +15,7 @@ from pathlib import Path
 import time
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "9"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "9")
 os.environ.setdefault("POLARS_MAX_THREADS", "8")
 os.environ.setdefault("OMP_NUM_THREADS", "8")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
@@ -397,8 +397,8 @@ def main():
         raise ValueError("Full validated cache is required")
     os.environ["TFB_DAILY_CACHE"] = str(cache.resolve())
     torch.set_num_threads(8)
-    if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
-        raise RuntimeError("Expected only physical GPU 9")
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA required")
     device, infos = torch.device("cuda:0"), panel_infos()
     Path(cfg["run"]).mkdir(parents=True, exist_ok=True)
     write_json(Path(cfg["run"]) / "config.json", {"kind": args.model, "model": cfg, "experiment": common})

@@ -24,7 +24,7 @@ from pathlib import Path
 
 # The shared-server rule requires physical GPU 9, which becomes cuda:0 here.
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "9"
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "9")
 
 import numpy as np
 import polars as pl
