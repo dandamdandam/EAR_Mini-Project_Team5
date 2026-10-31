@@ -21,7 +21,13 @@ def pivot_to_grid(df, grid, links, value_col):
 def build_panel(panel):
     net_dir = KROOT / 'corridors' / panel / 'network'
     fd = pd.read_csv(net_dir / 'fd_parameters.csv', dtype={'link_id': str}).drop_duplicates('link_id').set_index('link_id')
-    ramp = pd.read_csv(net_dir / 'ramp_attachment_map.csv', dtype=str)
+    topo = pd.read_csv(net_dir / 'lwr_mainline_topology.csv', dtype=str).drop_duplicates('mainline_link_id').set_index('mainline_link_id')
+    mainline = set(topo.index)
+
+    def count_conn(l, col):
+        if l not in mainline:
+            return 0.0
+        return float(sum(1 for e in str(topo.at[l, col]).split(';') if e.startswith('CONN')))
 
     grid = time_grid()
 
@@ -49,8 +55,8 @@ def build_panel(panel):
     lanes = fd.loc[links, 'lanes'].to_numpy(np.float32)
     length = fd.loc[links, 'length_km'].to_numpy(np.float32)
     milepost = np.array([milepost_map[l] for l in links], dtype=np.float32)
-    n_or = np.array([(ramp[(ramp.nearest_mainline_link_id == l) & (ramp.ramp_type == 'OR')]).shape[0] for l in links], dtype=np.float32)
-    n_fr = np.array([(ramp[(ramp.nearest_mainline_link_id == l) & (ramp.ramp_type == 'FR')]).shape[0] for l in links], dtype=np.float32)
+    n_or = np.array([count_conn(l, 'incoming_link_ids') for l in links], dtype=np.float32)
+    n_fr = np.array([count_conn(l, 'outgoing_link_ids') for l in links], dtype=np.float32)
 
     s_true = interp_fill(s_raw)
     dead = ~np.isfinite(s_true).all(axis=0)

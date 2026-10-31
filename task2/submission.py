@@ -169,7 +169,7 @@ def generate(splits=('validation', 'private'), out=str(DEFAULT_OUT)):
 
     ck2 = torch.load(CACHE_DIR / 't2_model.pt', weights_only=False)
     c_in = int(ck2['model']['proj.0.weight'].shape[1])
-    cfg = {'use_cond': c_in in (21, 18), 'no_ode': c_in in (18, 16),
+    cfg = {'use_cond': c_in in (23, 20), 'no_ode': c_in in (20, 18),
            'tau_onset': float(ck2.get('tau_onset', ck2['tau'])),
            'tau_ongoing': float(ck2.get('tau_ongoing', ck2['tau']))}
     qmodel = QueueNet(c_in=c_in, no_ode=cfg['no_ode']).to(DEVICE)

@@ -46,7 +46,7 @@ def main():
         'cond_feature': args.cond_feature, 'no_ode': args.no_ode, 'legacy_cnd': args.legacy_cnd,
         'pos_weight': float(pos_weight), 'train_positive_rate': float(p_pos)})
 
-    c_in = 19 + (2 if args.cond_feature else 0) - (3 if args.no_ode else 0)
+    c_in = 21 + (2 if args.cond_feature else 0) - (3 if args.no_ode else 0)
     model = QueueNet(c_in=c_in, no_ode=args.no_ode).to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     tau_grid = np.arange(0.2, 0.81, 0.05)

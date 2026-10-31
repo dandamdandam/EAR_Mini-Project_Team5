@@ -34,9 +34,13 @@ def ode_day_features(day_model, day_ctx, offset, hourly, days, slots, L, dows):
 
 def static_features(z):
     vf = z['vf']
+    mp = z['milepost']
+    gap = np.diff(mp).astype(np.float32)
+    gap_prev = np.concatenate([[0.0], gap])
+    gap_next = np.concatenate([gap, [0.0]])
     return np.stack([z['lanes'] / 5.0, z['length'], vf / 120.0,
-                     (z['milepost'] - z['milepost'].min()) / max(float(np.ptp(z['milepost'])), 1e-3),
-                     z['n_or'], z['n_fr']], axis=-1).astype(np.float32)
+                     (mp - mp.min()) / max(float(np.ptp(mp)), 1e-3),
+                     z['n_or'], z['n_fr'], gap_prev, gap_next], axis=-1).astype(np.float32)
 
 
 def assemble_pool(panel, z, wy_feats, t0s, cond, rng, day_model, day_ctx, offset, dows, fill_clim=None):

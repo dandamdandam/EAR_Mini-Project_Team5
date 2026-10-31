@@ -150,8 +150,8 @@ def oracle_percond(S, cond, tau_grid=TAU_GRID):
 def analyze_ckpt(ck_path, pools):
     sd = torch.load(ck_path, weights_only=False)['model']
     c_in = int(sd['proj.0.weight'].shape[1])
-    use_cond = c_in in (21, 18)
-    model = QueueNet(c_in=c_in, no_ode=c_in in (18, 16)).to(DEVICE)
+    use_cond = c_in in (23, 20)
+    model = QueueNet(c_in=c_in, no_ode=c_in in (20, 18)).to(DEVICE)
     model.load_state_dict(sd)
     Sv, cv = score_matrix(collect_entries(model, pools['val'], use_cond))
     St, ct = score_matrix(collect_entries(model, pools['test'], use_cond))

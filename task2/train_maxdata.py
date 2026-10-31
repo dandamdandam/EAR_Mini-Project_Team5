@@ -144,7 +144,7 @@ def main():
     n_train = sum(len(pl['qt']) for pl in pools['train'])
     print(f'train windows={n_train} positive rate={p_pos:.4f} pos_weight={pos_weight.item():.2f}', flush=True)
 
-    model = QueueNet(c_in=18 + 2 * ARGS.pe_freqs, no_ode=True, pe_freqs=ARGS.pe_freqs).to(DEVICE)
+    model = QueueNet(c_in=20 + 2 * ARGS.pe_freqs, no_ode=True, pe_freqs=ARGS.pe_freqs).to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
     tau_grid = np.arange(0.2, 0.81, 0.05)
 

@@ -122,7 +122,7 @@ def main():
     pos_weight = torch.tensor(min((1 - p_pos) / max(p_pos, 1e-4), 4.0), device=DEVICE)
     print(f'train target positive rate={p_pos:.4f} pos_weight={pos_weight.item():.2f}', flush=True)
 
-    model = QueueNet(c_in=18, no_ode=True).to(DEVICE)
+    model = QueueNet(c_in=20, no_ode=True).to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
     tau_grid = np.arange(0.2, 0.81, 0.05)
 
