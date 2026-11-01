@@ -137,12 +137,13 @@ def main():
     ap.add_argument('--epochs', type=int, default=30)
     ap.add_argument('--patience', type=int, default=8)
     ap.add_argument('--no-nb', action='store_true')
+    ap.add_argument('--stat6', action='store_true')
     ap.add_argument('--phys', action='store_true')
     ARGS = ap.parse_args()
     torch.manual_seed(SEED)
     rng = np.random.default_rng(SEED)
     pools = build_all_pools(rng)
-    if ARGS.no_nb:
+    if ARGS.no_nb or ARGS.stat6:
         for split in pools:
             for pool in pools[split]:
                 pool['stat'] = pool['stat'][:, :6]
@@ -153,7 +154,7 @@ def main():
     n_train = sum(len(pl['qt']) for pl in pools['train'])
     print(f'train windows={n_train} positive rate={p_pos:.4f} pos_weight={pos_weight.item():.2f}', flush=True)
 
-    model = QueueNet(c_in=(16 if ARGS.no_nb else 20) + 2 * ARGS.pe_freqs, no_ode=True,
+    model = QueueNet(c_in=(16 if ARGS.no_nb else 18 if ARGS.stat6 else 20) + 2 * ARGS.pe_freqs, no_ode=True,
                      pe_freqs=ARGS.pe_freqs, no_nb=ARGS.no_nb, phys=ARGS.phys).to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
     tau_grid = np.arange(0.2, 0.81, 0.05)
@@ -208,7 +209,7 @@ def main():
     test_eq, test_per = percond_eval(St, ct, taus)
     report = {'run': ARGS.run_name, 'seed': SEED, 'best_epoch': best_epoch,
               'pe_freqs': ARGS.pe_freqs, 'batch': ARGS.batch, 'max_epochs': ARGS.epochs,
-              'no_nb': ARGS.no_nb, 'phys': ARGS.phys,
+              'no_nb': ARGS.no_nb, 'stat6': ARGS.stat6, 'phys': ARGS.phys,
               'alpha': float(torch.sigmoid(model.alpha)) if ARGS.phys else None,
               'train_windows': n_train, 'train_positive_rate': float(p_pos),
               'caps': {'onset': ARGS.on_cap, 'ongoing': ARGS.og_cap, 'neg': ARGS.ng_cap,
